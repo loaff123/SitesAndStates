@@ -1,8 +1,8 @@
 # Validation and limitations
 
-Status: source-reviewed experimental candidate with a reviewed standalone build. Local numerical and software checks pass. Real-browser qualification has not run. This is not a qualified release.
+Status: source-reviewed experimental release with passing local numerical/software checks and bounded hosted Chromium qualification. Twenty-four browser cases passed; three real background-tab visibility cases were explicitly skipped because the headless runner did not expose that capability. This is not a claim of universal browser, accessibility or teaching-effectiveness validation.
 
-实验性候选版本：源码与单文件构建已审查，本地数值及软件检验通过。真实浏览器验证尚未运行；不是合格发布版本。
+实验性版本：源码与单文件构建已审查，本地数值和软件检验通过；托管 Chromium 的 24 项浏览器用例通过。3 项真实后台标签页可见性用例因无头浏览器不支持而明确跳过。尚未完成全浏览器、辅助技术或教学效果验证。
 
 ## Reproducible local checks
 
@@ -21,18 +21,28 @@ Reducer and display tests cover lesson-control isolation, resets, passive coordi
 
 The numerical engine uses scaling-and-squaring with a convergent Taylor series for tiny dense matrices. It does not normalize an evolved state to conceal drift. An invariant failure above 1e-10 stops playback and reports an error.
 
-## Outstanding browser qualification
+## Hosted Chromium qualification: 2026-10-17 UTC
 
-None of the following has been established by real-browser testing of this candidate:
+[Exact-input workflow run](https://github.com/loaff123/SitesAndStates/actions/runs/39010487813) tested commit `dd26ce98e49a8d06aa010f9ffc4a6d836ed27a79` with Node 24.21.0, Playwright 1.64.0 and Chrome for Testing 156.0.8078.4 on Ubuntu. The current changes are documentation-only; application, tests, fixture and standalone export are unchanged from that tested source.
 
-- Full lesson and sandbox operation
-- Desktop, phone and landscape layout or representative screenshot review
-- Native keyboard operation, focus, held pointer/range dragging or touch behavior
-- Reduced motion, real browser zoom or background-tab pause/resume
-- Direct offline file opening with networking disabled
-- Assistive-technology behavior
+- All 46 Node tests passed, with no failures or skips.
+- Deterministic rebuild matched the committed standalone HTML and the SHA-256 above.
+- Independent regeneration checked all 3,312 reference evolutions successfully.
+- The browser runner executed 27 cases with one worker: 24 passed, three skipped, zero failures or flaky results.
+- Desktop (1440×900), phone (360×800) and landscape (800×360) contexts passed all six lessons in both languages, sector and sandbox controls, resets, explicit coefficient preparation, partial-draft preservation, keyboard/focus transitions, reduced motion and 44-pixel control targets.
+- Native intermediate range dragging, playback start/pause/end and standalone file opening with networking disabled passed in all three contexts. Device contexts emulate Chromium viewports and touch; they are not physical-device certification.
+- Three real background-tab pause/resume cases were skipped: opening another page and bringing it to front did not make the original page hidden in hosted headless Chromium. No synthetic visibility event was substituted.
 
-The optional Playwright configuration, browser test code and hosted-workflow definition are included as unrun validation material. Their presence does not establish that the tests execute or pass. No browser evidence is included. Successful hosting alone would not establish offline file-opening behavior.
+[Exact-commit browser evidence](https://github.com/loaff123/SitesAndStates/actions/runs/39010487813/artifacts/12092692512) contains the report, input commit, build checksum and 34 screenshots. Archive SHA-256: `03c99fa595ad80870752dae5c7d6202b7a9bbfb090034e73347b7a8d176c2981`. GitHub retains this artifact for 14 days; its planned expiry is 2026-10-31.
+
+Six representative screenshots were visually reviewed: English desktop rectangular map, Chinese phone passive modes, English landscape sandbox, English phone same-density comparison, Chinese 200%-equivalent viewport reflow and Chinese desktop offline export. No clipping or overlapping content was observed in those images. This is a bounded visual review, not a full accessibility audit.
+
+## Remaining browser and accessibility limits
+
+- Actual background-tab pause/resume remains unverified because the runner did not expose genuine visibility changes.
+- Actual browser zoom is unverified. The passed 720×450 desktop reflow check is a 200%-equivalent viewport test, not evidence of real browser zoom.
+- Assistive-technology behavior, other browser engines and physical devices have not been assessed.
+- Browser qualification does not establish teaching effectiveness, comparative advantage or universal support.
 
 ## Interpretation limits
 
