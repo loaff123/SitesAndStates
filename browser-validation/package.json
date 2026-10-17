@@ -1,0 +1,8 @@
+{
+  "name": "sites-and-states-browser-validation",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Optional hosted Chromium qualification; not needed for the app or offline build",
+  "devDependencies": { "@playwright/test": "1.64.0" }
+}

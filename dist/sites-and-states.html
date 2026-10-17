@@ -1,0 +1,571 @@
+<!doctype html>
+<!-- Sites and States offline export; source SHA256 f9220b5638e144ab70181e19976258db8e8e9d8d94f5728e44e640b9fdccd450. Original code MIT; original educational copy and visuals CC BY 4.0. -->
+<html lang="zh-Hans">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="An experimental bilingual teaching tool connecting physical sites, full bosonic state amplitudes and observable predictions.">
+  <title>空间与量子态 · Sites and States</title>
+  <style>
+/* Original visual design: CC BY 4.0. See LICENSE-CONTENT. */
+:root{color-scheme:light;--paper:#f5f3eb;--surface:#fffefa;--navy:#172b37;--muted:#526570;--teal:#12645f;--teal-soft:#e6f0ec;--amber:#915800;--amber-soft:#fff1d5;--line:#cfd7d4;--blue-soft:#edf1f7;--radius:16px;font-family:ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;font-size:15px;line-height:1.6;color:var(--navy);background:var(--paper)}*{box-sizing:border-box}body{margin:0}button,input,select{font:inherit}button,select{min-height:44px}button{border:1px solid var(--line);border-radius:8px;background:var(--surface);color:var(--navy);padding:9px 12px;cursor:pointer;text-align:left;line-height:1.45}button:hover{border-color:var(--teal);background:#f3f8f5}button[aria-pressed=true],button[aria-current=step]{border-color:var(--teal);background:var(--teal-soft);color:#0e504b}button:disabled{opacity:.6;cursor:default}a{color:var(--teal)}:focus-visible{outline:3px solid #ad6600;outline-offset:3px}p{margin:0 0 12px}h1,h2,h3{line-height:1.35;margin:0 0 12px;font-weight:650;letter-spacing:-.025em}h1{font-size:1.9rem}h2{font-size:1.25rem}h3{font-size:1rem}strong{font-weight:650}input[type=text],select{border:1px solid #9aaea8;border-radius:7px;background:var(--surface);padding:9px;color:var(--navy);min-height:44px;max-width:100%}input[type=range]{width:100%;min-height:44px;accent-color:var(--teal);margin:0}input[type=text]{width:100%}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}.skip-link{position:absolute;left:12px;top:-80px;background:var(--navy);color:white;padding:12px;z-index:10}.skip-link:focus{top:8px}.app-header{display:flex;justify-content:space-between;align-items:center;gap:20px;padding:26px 32px 24px;max-width:1680px;margin:auto}.wordmark{display:flex;gap:12px;align-items:center;color:inherit;text-decoration:none}.wordmark strong{font-size:1.28rem;display:block;letter-spacing:-.025em}.tagline{color:var(--muted);font-size:.8rem;display:block}.brand-icon{background:var(--teal);color:var(--surface);border-radius:11px;padding:10px;font:600 20px ui-monospace,monospace;letter-spacing:-3px;width:45px;height:45px}.header-actions{display:flex;align-items:center;gap:12px}.prototype-pill{font:600 .62rem ui-monospace,monospace;letter-spacing:.07em;border:1px solid var(--line);border-radius:20px;padding:6px 10px;color:var(--muted)}.lesson-nav{display:flex;gap:6px;padding:0 32px 20px;max-width:1680px;margin:auto;flex-wrap:wrap}.lesson-nav button{flex:1;display:flex;gap:9px;align-items:center;padding:8px 10px;min-width:100px;background:transparent;font-size:.76rem}.lesson-nav button>span:first-child{font-family:ui-monospace,monospace;color:var(--teal);font-weight:700}.lesson-nav button[aria-current=step]{background:var(--teal);color:white}.lesson-nav button[aria-current=step]>span:first-child{color:#c0e7d3}.model-strip{max-width:1616px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 24px;border-block:1px solid var(--line)}.model-badge{font-size:.78rem;font-weight:650;color:var(--teal)}.model-badge>span{display:block;font-weight:400;color:var(--muted);margin-top:4px;font-size:.73rem}.dimensions{display:flex;gap:28px;flex-shrink:0}.dimensions div{display:flex;align-items:center;gap:9px}.dimensions span{font-size:.65rem;color:var(--muted);max-width:75px;line-height:1.35}.dimensions strong{font:500 1.7rem ui-monospace,monospace}.status-bar{max-width:1680px;margin:auto;padding:10px 32px;font-size:.73rem;color:var(--muted);min-height:40px}.workspace{display:grid;grid-template-columns:270px minmax(0,1fr) 265px;grid-template-areas:'lesson physical predictions' 'lesson amplitudes predictions' 'lesson mathematics predictions';gap:18px;align-items:start;max-width:1680px;margin:auto;padding:8px 32px 32px}.lesson-area{grid-area:lesson;padding:10px 14px 0 0}.physical{grid-area:physical}.amplitudes{grid-area:amplitudes}.predictions{grid-area:predictions}.mathematics{grid-area:mathematics}.panel{padding:22px;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);min-width:0}.panel-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:13px}.eyebrow{color:var(--teal);font:650 .7rem ui-monospace,monospace;letter-spacing:.08em;text-transform:uppercase}.pill{border:1px solid var(--line);border-radius:20px;padding:3px 9px;font:500 .72rem ui-monospace,monospace;white-space:nowrap}.lesson-copy>.eyebrow{display:block;margin-bottom:12px}.intro{font-size:.94rem;color:var(--muted)}.question{padding:15px 0 10px;border-top:1px solid var(--line);margin-top:18px}.step-label{font-weight:700;color:var(--teal);font-size:.76rem;display:block;margin-bottom:5px}.question p,.inspection p,.explanation p{font-size:.83rem}.inspection{margin-bottom:12px}.control-panel{border-top:1px solid var(--line);padding-top:15px}fieldset{border:0;margin:0 0 16px;padding:0;min-width:0}legend{font-size:.76rem;font-weight:700;margin-bottom:8px;padding:0}.button-row{display:flex;gap:6px;flex-wrap:wrap}.button-row button{flex:1;min-width:84px;font-size:.77rem}.sector-buttons{display:grid;grid-template-columns:1fr 1fr;gap:6px}.sector-buttons button{font:.8rem ui-monospace,monospace;text-align:center}.preset-list{display:grid;gap:5px}.preset-list button{font-size:.76rem}.stages{margin-bottom:16px}.range-label{display:flex;justify-content:space-between;font-size:.77rem;font-weight:650;margin-top:7px}.mono{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-variant-numeric:tabular-nums;overflow-wrap:anywhere}.small{font-size:.75rem;line-height:1.65;color:var(--muted);margin-top:8px}.caption{font-size:.72rem;line-height:1.65;border-top:1px solid var(--line);padding-top:12px;color:var(--muted);margin:14px 0 0}.time-display{display:block;font-size:1.35rem;color:var(--teal)}.time-buttons{display:grid;grid-template-columns:repeat(4,1fr);gap:4px;margin-bottom:8px}.time-buttons button{text-align:center;padding:8px 3px;font-size:.75rem}.time-entry{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:5px;margin-bottom:6px}.time-entry button{font-size:.75rem}.play-button,.reset-button{width:100%;text-align:center;font-size:.78rem}.reset-button{margin:8px 0 18px;border-style:dashed;background:transparent}.primary{background:var(--teal);border-color:var(--teal);color:white}.primary:hover{background:#0d514d;color:white}.answer-choices{display:grid;gap:6px}.answer-choice{font-size:.77rem;padding:10px 11px}.feedback{border-left:3px solid var(--amber);background:var(--amber-soft);padding:10px;margin-top:9px}.feedback.correct{border-color:var(--teal);background:var(--teal-soft)}.lesson-paging{display:flex;gap:5px;margin-top:15px}.lesson-paging button{font-size:.76rem;flex:1;text-align:center}.chain{display:flex;justify-content:space-around;gap:12px;padding:12px 10px 0;position:relative}.chain:before{content:'';position:absolute;left:15%;right:15%;top:125px;height:2px;background:var(--line)}.site-node{display:flex;flex-direction:column;align-items:center;min-width:60px;position:relative;font-size:.78rem}.density-value{font-size:1.4rem;color:var(--teal);margin-bottom:8px}.site-gauge{height:97px;width:57px;border-radius:28px 28px 12px 12px;background:#edf2ee;position:relative;border:1px solid #c4d6cc;overflow:hidden;margin-bottom:9px}.density-fill{position:absolute;bottom:0;left:0;right:0;background:#23776d}.site-orbit{position:absolute;bottom:5px;left:13px;border:1px solid #aec8c0;background:var(--surface);border-radius:50%;width:29px;height:29px;display:grid;place-items:center;font-family:ui-monospace,monospace}.amplitude-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(156px,1fr));gap:9px}.config-card{display:flex;flex-direction:column;padding:12px;min-width:0;background:var(--surface);border-radius:12px}.config-card.selected{border:2px solid var(--teal);padding:11px;box-shadow:0 0 0 2px #e3ede7}.config-top{display:flex;justify-content:space-between;align-items:center;width:100%}.ket{font:550 1.05rem ui-monospace,monospace;letter-spacing:-.04em}.phasor{width:35px;height:35px;color:var(--amber);flex-shrink:0}.amplitude-value{font-size:1.08rem;min-height:28px;line-height:1.45}.mini-label{font-size:.63rem;color:var(--muted);display:block}.prob-row{font-size:.62rem;display:flex;align-items:center;justify-content:space-between;gap:5px;width:100%;margin-top:12px}.prob-row strong{font-size:.83rem}.prob-track{display:block;height:4px;background:#e7ede9;width:100%;border-radius:3px;margin-top:4px;overflow:hidden}.prob-track>span{display:block;height:100%;background:var(--teal)}.phase-label{display:block;font-size:.62rem;color:var(--muted);margin-top:10px;text-align:left}.total-line{display:flex;justify-content:space-between;font-size:.75rem;margin:12px 0}.selection{padding:10px 12px;background:var(--blue-soft);border-radius:8px;display:flex;flex-wrap:wrap;gap:4px 10px;font-size:.7rem;align-items:center}.selection .mini-label{width:100%}.hero-number{font:400 3.1rem ui-monospace,monospace;letter-spacing:-.05em;color:var(--teal);line-height:1.25;overflow-wrap:anywhere}.metric-group{padding-top:18px;margin-top:18px;border-top:1px solid var(--line)}.metric{display:flex;justify-content:space-between;gap:12px;font-size:.85rem;padding:5px 0}.metric strong{font-size:.87rem}.metric-group h3{font-size:.85rem}.reference{background:var(--amber-soft);padding:12px;border-radius:10px;margin-top:18px;font-size:.77rem;overflow-wrap:anywhere}.reference p:last-child{margin-bottom:0}.mode-profiles{border-top:1px solid var(--line);margin-top:16px;padding-top:15px}.mode-profile{display:grid;grid-template-columns:25px minmax(70px,1fr);gap:3px 10px;align-items:center;border-bottom:1px solid #e4e9e5;padding:8px 0}.mode-profile svg{width:100%;height:48px;color:var(--amber)}.mode-profile>.mono{grid-column:2;font-size:.65rem;color:var(--muted)}details>summary{cursor:pointer;font-size:.82rem;font-weight:650;min-height:44px;padding:10px 0;line-height:1.5}details>summary:focus-visible{outline:3px solid #ad6600}.math-section{border-top:1px solid var(--line)}.math-section p{font-size:.77rem;margin-top:10px}.matrix-scroll,.coordinate-scroll{max-width:100%;overflow:auto;border-radius:8px}.matrix{border-collapse:collapse;width:100%;font:.7rem ui-monospace,monospace;background:#f5f7f3}.matrix caption{font:500 .7rem ui-sans-serif,system-ui,sans-serif;text-align:left;margin:12px 0 7px;color:var(--muted)}.matrix td{border:1px solid var(--line);padding:7px;text-align:center;min-width:43px;white-space:nowrap}.coordinate-grid{width:100%;border-collapse:separate;border-spacing:4px;font-size:.75rem}.coordinate-grid caption{text-align:left;font-size:.75rem}.coordinate-grid th{font-weight:500;padding:4px}.coordinate-grid td{padding:0}.grid-cell{width:100%;text-align:center;min-width:75px;padding:8px 3px}.grid-cell strong{display:block;font-size:.7rem}.grid-cell span{display:block;font-size:.62rem}.grid-cell.selected{background:var(--teal-soft);border-color:var(--teal)}.sector-lanes{display:grid;gap:5px;padding:12px;background:var(--blue-soft);border-radius:10px;margin-top:10px}.sector-lanes p{margin:5px 0;font-size:.76rem}.map-arrow{color:var(--amber);font-weight:700}.warning-note{padding:8px 10px;background:var(--amber-soft);border-radius:6px;color:#654700;font-size:.73rem}.editor-section{margin:14px 0}.editor-section>button{font-size:.75rem;margin:4px 0}.complex-fields{display:grid;grid-template-columns:1fr 1fr;gap:7px}.complex-fields label{font-size:.65rem;color:var(--muted)}.complex-fields input{font:.75rem ui-monospace,monospace;padding:9px 5px;margin-top:4px}.editor-fields fieldset{padding-bottom:10px;border-bottom:1px solid var(--line);margin-bottom:10px}footer{border-top:1px solid var(--line);max-width:1616px;margin:0 auto;padding:25px 24px 35px;color:var(--muted);font-size:.75rem}footer .release{font-weight:600;color:var(--navy)}.credit-links{display:flex;flex-wrap:wrap;gap:6px 20px}.credit-links a{min-height:44px;display:flex;align-items:center}.release{max-width:950px}button,select,input{scroll-margin:20px}@media(min-width:1440px){.workspace{grid-template-columns:285px minmax(0,1fr) 295px;gap:24px}.panel{padding:26px}.amplitude-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.config-card{padding:14px}.config-card.selected{padding:13px}}
+@media(max-width:1099px) and (min-width:1000px){.workspace{grid-template-columns:230px minmax(0,1fr) 235px;padding-inline:20px;gap:12px}.panel{padding:17px}.dimensions{gap:14px}.app-header,.lesson-nav{padding-inline:20px}.model-strip{padding-inline:20px}.amplitude-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:999px){.workspace{grid-template-columns:245px minmax(0,1fr);grid-template-areas:'lesson physical' 'lesson amplitudes' 'lesson predictions' 'lesson mathematics';gap:16px;padding-inline:20px}.app-header,.lesson-nav{padding-inline:20px}.model-strip{flex-direction:column;align-items:flex-start;padding-inline:20px}.dimensions{width:100%;justify-content:space-between;gap:10px}.predictions{display:block}.hero-number{font-size:2.5rem}.lesson-nav button{flex-basis:20%;min-width:120px}.amplitude-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:639px){:root{font-size:15px}.app-header{padding:18px 16px;gap:10px;align-items:flex-start}.tagline{font-size:.67rem}.wordmark{gap:8px}.wordmark strong{font-size:1.02rem}.brand-icon{width:37px;height:37px;padding:7px;font-size:18px}.prototype-pill{display:none}.header-actions{gap:5px}select{font-size:.75rem;padding:8px 5px;max-width:82px}.lesson-nav{padding:0 14px 14px;gap:5px}.lesson-nav button{flex:1 1 28%;min-width:90px;font-size:.62rem;gap:5px;padding:6px 7px}.model-strip{padding:13px 16px;gap:12px}.model-badge{font-size:.68rem}.model-badge>span{font-size:.65rem}.dimensions{gap:5px}.dimensions div{gap:5px;align-items:flex-start;flex-direction:column}.dimensions span{font-size:.57rem;max-width:75px}.dimensions strong{font-size:1.4rem}.status-bar{padding:9px 16px;font-size:.68rem}.workspace{display:flex;flex-direction:column;padding:5px 14px 24px;gap:14px}.workspace>*{width:100%}.lesson-area{padding:8px 2px 0}.lesson-copy h1{font-size:1.7rem}.lesson-area{display:contents}.lesson-copy{order:0;padding:6px 3px 0}.control-panel{order:1;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:15px}.physical{order:2}.amplitudes{order:3}.predictions{order:4}.explanation{order:5;padding:5px}.mathematics{order:6}.panel{padding:18px 15px}.lesson-area .intro{font-size:.88rem}.question{margin-top:12px;padding:12px 0 5px}.inspection{margin-bottom:3px}.button-row button,.preset-list button{font-size:.77rem}.control-panel>fieldset:last-of-type{margin-bottom:10px}.reset-button{margin-bottom:0}.amplitude-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}.config-card{padding:10px}.config-card.selected{padding:9px}.amplitude-value{font-size:.93rem}.phase-label,.prob-row,.mini-label{font-size:.58rem}.ket{font-size:.94rem}.phasor{width:29px;height:29px}.hero-number{font-size:2.75rem}.time-buttons button{min-height:44px}.chain{padding-inline:0}.density-value{font-size:1.25rem}.predictions .reference{font-size:.77rem}.matrix td{padding:6px 4px;min-width:36px}.matrix{font-size:.59rem}footer{padding-inline:18px}.mode-profile>.mono{font-size:.6rem}.grid-cell{min-width:64px}.coordinate-grid{border-spacing:3px}.grid-cell strong{font-size:.64rem}.grid-cell span{font-size:.56rem}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+
+.license-notices{max-width:1568px;margin:0 auto;padding:0 24px 30px;color:var(--muted);font-size:.75rem}.license-notices pre{white-space:pre-wrap;overflow-wrap:anywhere;}
+
+</style>
+</head>
+<body>
+  <div id="app"></div>
+  <noscript>This experiment needs JavaScript. It runs locally without network requests. 本实验需要 JavaScript，可离线运行。</noscript>
+  <script>
+(()=>{
+'use strict';
+// module: math.mjs
+const {C,M}=(()=>{
+/** Small dense complex arithmetic. A scalar is [real, imaginary]. No mutation. */
+const C = Object.freeze({
+  add: (a,b) => [a[0]+b[0],a[1]+b[1]],
+  sub: (a,b) => [a[0]-b[0],a[1]-b[1]],
+  mul: (a,b) => [a[0]*b[0]-a[1]*b[1],a[0]*b[1]+a[1]*b[0]],
+  conj: a => [a[0],-a[1]],
+  scale: (a,x) => [a[0]*x,a[1]*x],
+  abs2: a => a[0]*a[0]+a[1]*a[1],
+  valid: a => Array.isArray(a)&&a.length===2&&a.every(Number.isFinite)
+});
+function shape(A) {
+  if(!Array.isArray(A)||!A.length||!Array.isArray(A[0])||!A[0].length) throw new Error('Matrix shape must be nonempty.');
+  const width=A[0].length;
+  if(!A.every(row=>Array.isArray(row)&&row.length===width)) throw new Error('Matrix must have a rectangular shape.');
+  if(!A.every(row=>row.every(C.valid))) throw new Error('Matrix entries must be finite complex pairs.');
+  return [A.length,width];
+}
+function zeros(rows,cols) {
+  if(!Number.isInteger(rows)||!Number.isInteger(cols)||rows<1||cols<1) throw new Error('Invalid matrix shape.');
+  return Array.from({length:rows},()=>Array.from({length:cols},()=>[0,0]));
+}
+function identity(n) { const A=zeros(n,n);for(let i=0;i<n;i++) A[i][i]=[1,0];return A; }
+function add(A,B) { const [r,c]=shape(A),[rb,cb]=shape(B);if(r!==rb||c!==cb) throw new Error('Matrix shape mismatch.');return A.map((row,i)=>row.map((z,j)=>C.add(z,B[i][j]))); }
+function scale(A,z) { shape(A);if(!C.valid(z)) throw new Error('Scale must be finite.');return A.map(row=>row.map(x=>C.mul(x,z))); }
+function mul(A,B) {
+  const [r,k]=shape(A),[kb,c]=shape(B);if(k!==kb) throw new Error('Matrix dimension mismatch.');
+  const out=zeros(r,c);
+  for(let i=0;i<r;i++) for(let a=0;a<k;a++) for(let j=0;j<c;j++) {
+    const x=A[i][a],y=B[a][j];out[i][j][0]+=x[0]*y[0]-x[1]*y[1];out[i][j][1]+=x[0]*y[1]+x[1]*y[0];
+  }
+  return out;
+}
+function adjoint(A) { const [r,c]=shape(A);return Array.from({length:c},(_,j)=>Array.from({length:r},(_,i)=>C.conj(A[i][j]))); }
+function apply(A,v) { if(!Array.isArray(v)||!v.every(C.valid)) throw new Error('Vector must have finite entries.');return mul(A,v.map(z=>[z])).map(row=>row[0]); }
+function inner(a,b) { if(!Array.isArray(a)||!Array.isArray(b)||a.length!==b.length||!a.every(C.valid)||!b.every(C.valid)) throw new Error('Vector shape or finite-value error.');return a.reduce((sum,z,i)=>C.add(sum,C.mul(C.conj(z),b[i])),[0,0]); }
+function kron(A,B) {
+  const [r,c]=shape(A),[rb,cb]=shape(B);const out=zeros(r*rb,c*cb);
+  for(let i=0;i<r;i++) for(let j=0;j<c;j++) for(let a=0;a<rb;a++) for(let b=0;b<cb;b++) out[i*rb+a][j*cb+b]=C.mul(A[i][j],B[a][b]);
+  return out;
+}
+function normInf(A) { shape(A);return Math.max(...A.map(row=>row.reduce((sum,z)=>sum+Math.hypot(...z),0))); }
+function expm(A) {
+  const [n,m]=shape(A);if(n!==m) throw new Error('Matrix exponential requires square shape.');
+  const norm=normInf(A);if(norm===0)return identity(n);
+  const s=Math.max(0,Math.ceil(Math.log2(norm/.5)));if(s>60) throw new Error('Numerical exponential scale exceeded.');
+  const a=scale(A,[2**(-s),0]);let term=identity(n),out=identity(n),converged=false;
+  for(let k=1;k<=64;k++) {term=scale(mul(term,a),[1/k,0]);out=add(out,term);if(normInf(term)<2e-16){converged=true;break;}}
+  if(!converged) throw new Error('Numerical exponential failed to converge.');
+  for(let k=0;k<s;k++) out=mul(out,out);
+  shape(out);return out;
+}
+const M=Object.freeze({zeros,identity,add,scale,mul,adjoint,apply,inner,kron,normInf,expm,shape});
+
+return {C,M};
+})();
+// module: physics.mjs
+const {Physics}=(()=>{
+
+
+function validateSector({L,N}) {
+  if(![2,3].includes(L)||!Number.isInteger(N)||N<0||N>3) throw new Error('Sector requires L=2 or 3 and N=0…3 (sandbox: N=1 or 2).');
+}
+function basis(sector) {
+  validateSector(sector);
+  function enumerate(L,N) {if(L===1)return [[N]];const out=[];for(let n=N;n>=0;n--)for(const rest of enumerate(L-1,N-n))out.push([n,...rest]);return out;}
+  return enumerate(sector.L,sector.N);
+}
+function siteCheck(sector,site) { validateSector(sector);if(!Number.isInteger(site)||site<0||site>=sector.L)throw new Error('Site index outside sector.'); }
+function annihilation(sector,site) {
+  siteCheck(sector,site);if(sector.N===0)throw new Error('Vacuum sector has no lower nonnegative sector.');
+  const from=basis(sector),to=basis({...sector,N:sector.N-1}),lookup=new Map(to.map((n,i)=>[n.join(','),i]));const A=M.zeros(to.length,from.length);
+  from.forEach((n,col)=>{if(n[site]){const m=[...n];m[site]--;A[lookup.get(m.join(','))][col]=[Math.sqrt(n[site]),0];}});return A;
+}
+function bilinear(sector,i,j) {
+  siteCheck(sector,i);siteCheck(sector,j);const states=basis(sector),lookup=new Map(states.map((n,k)=>[n.join(','),k]));const A=M.zeros(states.length,states.length);
+  states.forEach((n,col)=>{if(n[j]){const m=[...n];let factor=Math.sqrt(m[j]);m[j]--;factor*=Math.sqrt(m[i]+1);m[i]++;A[lookup.get(m.join(','))][col]=[factor,0];}});return A;
+}
+function hamiltonian(sector,j,u) {
+  if(!Number.isFinite(j)||!Number.isFinite(u))throw new Error('Hamiltonian parameters must be finite.');
+  const states=basis(sector);let H=M.zeros(states.length,states.length);
+  states.forEach((n,i)=>{H[i][i]=[u*n.reduce((sum,k)=>sum+k*(k-1)/2,0),0];});
+  for(let i=0;i<sector.L-1;i++)H=M.add(H,M.scale(M.add(bilinear(sector,i,i+1),bilinear(sector,i+1,i)),[-j,0]));
+  return H;
+}
+function evolve(H,c,tau) {
+  const [r,k]=M.shape(H);if(r!==k||c.length!==r)throw new Error('Evolution dimension mismatch.');
+  if(!Number.isFinite(tau))throw new Error('Time must be finite.');
+  if(M.normInf(M.add(H,M.scale(M.adjoint(H),[-1,0])))>1e-12)throw new Error('Hamiltonian must be Hermitian.');
+  const norm=M.inner(c,c)[0];if(Math.abs(norm-1)>1e-10)throw new Error('Prepared vector must have unit norm.');
+  return M.apply(M.expm(M.scale(H,[0,-tau])),c);
+}
+function expect(c,A) {return M.inner(c,M.apply(A,c));}
+function predict(sector,j,u,c) {
+  const states=basis(sector);if(c.length!==states.length)throw new Error('State dimension does not match sector.');
+  const norm=M.inner(c,c)[0],prob=c.map(C.abs2),density=Array.from({length:sector.L},(_,i)=>states.reduce((sum,n,k)=>sum+prob[k]*n[i],0));
+  const pairs=[];for(let i=0;i<sector.L;i++)for(let k=i+1;k<sector.L;k++)pairs.push({i,j:k,value:states.reduce((sum,n,a)=>sum+prob[a]*n[i]*n[k],0)});
+  const gamma=Array.from({length:sector.L},(_,i)=>Array.from({length:sector.L},(_,k)=>expect(c,bilinear(sector,i,k))));
+  const currents=Array.from({length:sector.L-1},(_,i)=>2*j*gamma[i][i+1][1]);
+  const pairProbability=sector.N===2?states.reduce((sum,n,k)=>sum+prob[k]*n.reduce((s,a)=>s+a*(a-1)/2,0),0):null;
+  return {norm,density,pairProbability,pairs,gamma,currents,energy:expect(c,hamiltonian(sector,j,u))[0],fieldExpectations:Array(sector.L).fill(0)};
+}
+const Physics=Object.freeze({basis,annihilation,bilinear,hamiltonian,evolve,predict});
+
+return {Physics};
+})();
+// module: representations.mjs
+const {Representations}=(()=>{
+
+
+
+function embedding(sector) {
+  const states=Physics.basis(sector),{L,N}=sector;if(N===1)return M.identity(L);if(N!==2)throw new Error('Displayed representations require N=1 or 2.');
+  const B=M.zeros(L*L,states.length);
+  states.forEach((n,col)=>{const slots=n.flatMap((count,i)=>Array(count).fill(i));const [i,j]=slots;if(i===j)B[i*L+j][col]=[1,0];else {B[i*L+j][col]=[1/Math.SQRT2,0];B[j*L+i][col]=[1/Math.SQRT2,0];}});return B;
+}
+function standingModes(L) {
+  if(![2,3].includes(L))throw new Error('Standing modes require L=2 or 3.');
+  return Array.from({length:L},(_,j)=>Array.from({length:L},(_,k)=>[Math.sqrt(2/(L+1))*Math.sin(Math.PI*(j+1)*(k+1)/(L+1)),0]));
+}
+function lift(sector,q) {
+  const [rows,cols]=M.shape(q);if(rows!==sector.L||cols!==sector.L)throw new Error('Mode transformation shape does not match sites.');
+  if(M.normInf(M.add(M.mul(M.adjoint(q),q),M.scale(M.identity(rows),[-1,0])))>1e-10)throw new Error('Mode transformation must be unitary.');
+  const B=embedding(sector);return sector.N===1?q.map(row=>row.map(z=>[...z])):M.mul(M.mul(M.adjoint(B),M.kron(q,q)),B);
+}
+function coordinates(c,S){return M.apply(M.adjoint(S),c);}
+function operator(O,S){return M.mul(M.mul(M.adjoint(S),O),S);}
+function grid(sector,c){if(sector.N!==2)return null;const v=M.apply(embedding(sector),c);return Array.from({length:sector.L},(_,i)=>v.slice(i*sector.L,(i+1)*sector.L));}
+const Representations=Object.freeze({embedding,standingModes,lift,coordinates,operator,grid});
+
+return {Representations};
+})();
+// module: presets.mjs
+const {Presets}=(()=>{
+
+function list(sector){
+  Physics.basis(sector);if(![1,2].includes(sector.N))throw new Error('Presets require N=1 or 2.');
+  const ids=['left','right'];
+  if(sector.N===1)ids.push('uniform');else if(sector.L===2)ids.push('split','noon','phase-plus','phase-minus');else ids.push('edges','double-superposition');
+  return ids.map(id=>({id,labelKey:`preset.${id}`}));
+}
+function vector(id,sector){
+  if(!list(sector).some(p=>p.id===id))throw new Error('Preset is not compatible with this sector.');
+  const states=Physics.basis(sector),c=states.map(()=>[0,0]);
+  const put=(occupation,z)=>{const index=states.findIndex(n=>n.every((x,i)=>x===occupation[i]));c[index]=z;};
+  if(id==='left')c[0]=[1,0];if(id==='right')c[c.length-1]=[1,0];
+  if(id==='uniform')c.forEach((_,i)=>{c[i]=[1/Math.sqrt(sector.L),0];});
+  if(id==='split')c[1]=[1,0];if(id==='noon'){c[0]=[1/Math.SQRT2,0];c[2]=[1/Math.SQRT2,0];}
+  if(id==='phase-plus'||id==='phase-minus'){c[0]=[.5,0];c[1]=[0,(id==='phase-plus'?1:-1)/Math.SQRT2];c[2]=[-.5,0];}
+  if(id==='edges')put([1,0,1],[1,0]);
+  if(id==='double-superposition')states.forEach((n,i)=>{if(n.includes(2))c[i]=[1/Math.sqrt(3),0];});
+  return c;
+}
+const Presets=Object.freeze({list,vector});
+
+return {Presets};
+})();
+// module: copy.mjs
+const {Copy}=(()=>{
+/** Original bilingual instructional interface text. CC BY 4.0; see LICENSE-CONTENT. */
+const phrases={
+ 'brand':['空间与量子态','Sites and States'],
+ 'tagline':['同一条直线，完整的量子态。','One physical line. The whole quantum state.'],
+ 'release':['实验性教学原型。数值检验针对模型与软件；教学效果尚未评估。','Experimental teaching prototype. Numerical checks test the model and software; learning effectiveness has not been evaluated.'],
+ 'skip':['跳到实验','Skip to the experiment'], 'language':['界面语言','Interface language'],
+ 'lessons':['六步探索','Six guided steps'],'sandbox':['自由探索','Sandbox'],'sandboxIntro':['选择一个小模型，制备量子态，再观察它的预测。每个配置的振幅都在这里。','Choose a tiny model, prepare a state, and inspect its predictions. Every configuration amplitude is here.'],
+ 'physical':['物理空间','Physical space'],'state':['量子态的坐标','State coordinates'],'predictions':['可观测量的预测','Observable predictions'],
+ 'chainCaption':['一维开放链。每个站点是保留的空间模式，不是连续场中的一个精确点。','An open one-dimensional chain. Each site is a retained spatial mode, not an exact point of a continuum field.'],
+ 'meanOccupation':['平均占据数 ⟨nᵢ⟩','Mean occupation ⟨nᵢ⟩'],
+ 'densityNote':['柱高表示平均占据数，不是粒子轨迹。平均占据数之和等于 N。','Bar heights show mean occupations, not particle trajectories. Mean occupations sum to N.'],
+ 'selectedConfig':['所选配置（仅高亮，不制备）','Selected configuration (highlight only, no preparation)'],
+ 'dimPhysical':['物理维度','Physical dimension'],'dimModes':['空间模式 L','Spatial modes L'],'dimParticles':['粒子数 N','Particles N'],'dimSector':['固定 N 扇区维度 d','Fixed-N sector dimension d'],
+ 'sectorNote':['完整玻色 Fock 空间包含所有 N≥0 扇区，仍是无限维的；这里只显示当前固定 N 扇区的全部配置。','The full bosonic Fock space contains every N≥0 sector and remains infinite-dimensional. Here every configuration in one fixed-N sector is shown.'],
+ 'badge':['一维 · 开放边界 · 有限模式 · 纯态','1D · open boundary · finite modes · pure state'],
+ 'basis':['显示基底','Display basis'],'siteBasis':['站点坐标 a','Site coordinates a'],'standingBasis':['驻波模式坐标 b','Standing-mode coordinates b'],
+ 'basisHint':['只变换坐标，不改变物理态、时钟或站点预测。','Changes coordinates only; physical state, clock and site predictions stay the same.'],
+ 'modeTitle':['扩展模式的形状','Profiles of extended modes'],'modeCaption':['每条形状都跨越原来的站点；它们不是新的局域站点，也不称为动量本征态。','Each profile extends over the original sites. These are not new localized sites or momentum eigenstates.'],
+ 'evenOdd':['偶 / 奇驻波模式','Even / odd standing modes'],'mode':['模式','Mode'],'site':['站点','Site'],
+ 'amplitude':['复振幅 c','Complex amplitude c'],'probability':['配置概率 |c|²','Configuration probability |c|²'],'phase':['相位 φ（弧度）','Phase φ (radians)'],
+ 'phaseUndefined':['零振幅：相位未定义','Zero amplitude: phase undefined'],'phaseUnresolved':['当前显示精度下无法分辨相位','Phase unresolved at display precision'],
+ 'probabilitySum':['配置概率之和','Sum of configuration probabilities'],'norm':['态的范数平方','State norm squared'],
+ 'pair':['两粒子同站概率','Probability of sharing a site'],'pairNA':['N=1：不适用','Not applicable: N=1'],
+ 'pairFormula':['N=2 时，P(同站)=Σᵢ⟨nᵢ(nᵢ−1)/2⟩。它不是未除以 2 的阶乘矩。','For N=2, P(same site)=Σᵢ⟨nᵢ(nᵢ−1)/2⟩. This is not the unhalved factorial moment.'],
+ 'pairJoint':['不同站点的联合计数 ⟨nᵢnⱼ⟩','Joint counts at distinct sites ⟨nᵢnⱼ⟩'],
+ 'pairJointNote':['当 N=2 时，每项就是这两个站点各有一个粒子的概率。','For N=2, each value is the probability of one boson at each of these two sites.'],
+ 'current':['相邻站点流','Neighbor current'],'currentHint':['正值指向右方：kᵢ,ᵢ₊₁=−ij(aᵢ†aᵢ₊₁−aᵢ₊₁†aᵢ)，单位 E₀/ℏ。','Positive is rightward: kᵢ,ᵢ₊₁=−ij(aᵢ†aᵢ₊₁−aᵢ₊₁†aᵢ), in units E₀/ℏ.'],
+ 'details':['查看数学细节','Inspect the mathematics'],'gamma':['一体密度矩阵 γᵢⱼ=⟨aᵢ†aⱼ⟩（站点基底）','One-body density matrix γᵢⱼ=⟨aᵢ†aⱼ⟩ (site basis)'],
+ 'energy':['平均能量 ⟨h⟩','Mean energy ⟨h⟩'],'hamiltonian':['当前显示基底中的 h','h in the displayed basis'],
+ 'hamiltonianHint':['被动变换同时作用于态、可观测量和完整哈密顿量：c_b=S†c_a，O_b=S†O_aS，h_b=S†h_aS。','A passive change transforms the state, observables and the whole Hamiltonian: c_b=S†c_a, O_b=S†O_aS, h_b=S†h_aS.'],
+ 'grid':['对称双坐标波函数（站点坐标）','Symmetric two-coordinate wavefunction (site coordinates)'],
+ 'gridCaption':['同一条物理直线上的两个坐标槽。粒子全同；坐标槽不是粒子的永久身份，也不是两个空间方向。','Two coordinate slots along the same physical line. The particles are identical; these are not permanent particle names or two spatial directions.'],
+ 'gridSlotR':['坐标槽 r','Coordinate slot r'],'gridSlotS':['坐标槽 s','Coordinate slot s'],
+ 'gridFormula':['Ψ(j,j)=c₂ₑⱼ；j≠k 时 Ψ(j,k)=cₑⱼ₊ₑₖ/√2。非对角联合概率须相加两个交换的格子。','Ψ(j,j)=c₂ₑⱼ; for j≠k, Ψ(j,k)=cₑⱼ₊ₑₖ/√2. An unordered off-diagonal coincidence adds both exchanged cells.'],
+ 'gridTotal':['Σᵣₛ|Ψ(r,s)|²=1；⟨nᵣ⟩=2Σₛ|Ψ(r,s)|²。','Σᵣₛ|Ψ(r,s)|²=1; ⟨nᵣ⟩=2Σₛ|Ψ(r,s)|².'],
+ 'map':['跨粒子数扇区的数学映射','A mathematical map between number sectors'],
+ 'mapCaption':['aᵢ: H_N → H_(N−1)。箭头表示数学映射，不是确定性的物理移除或测量操作。','aᵢ: H_N → H_(N−1). The arrow is a mathematical map, not deterministic physical removal or a measurement operation.'],
+ 'mapInput':['输入扇区','Input sector'],'mapOutput':['输出扇区（不归一化）','Output sector (unnormalized)'],'vacuum':['真空 |0⟩','Vacuum |0⟩'],
+ 'mapNorm':['输出范数平方 = ⟨nᵢ⟩','Output norm squared = ⟨nᵢ⟩'],
+ 'mapNormNote':['这是数学范数，不是归一化的移除概率；它可以大于 1。','This is a mathematical norm, not a normalized removal probability; it can exceed 1.'],
+ 'mapTiny':['输出非零，但当前显示精度无法分辨其大小；这不是精确的零向量。','The output is nonzero but unresolved at display precision; it is not an exact zero vector.'],
+ 'gridCombined':['所选配置的网格概率（交换项相加）','Selected configuration probability from the grid (exchanged entries combined)'],
+ 'mapZero':['此映射将这个特定输入变成零向量；算符本身并非零。','This map annihilates this particular input vector; the operator itself is not zero.'],
+ 'alpha':['固定 N 时 αᵢ=⟨Ψ_N|aᵢ|Ψ_N⟩=0','At fixed N, αᵢ=⟨Ψ_N|aᵢ|Ψ_N⟩=0'],
+ 'alphaNote':['因为 aᵢ 的输出属于正交的 N−1 扇区。期望值为零不意味着没有粒子、没有密度或没有一阶相干。','The output of aᵢ belongs to the orthogonal N−1 sector. Zero expectation does not mean zero particles, zero density or absent first-order coherence.'],
+ 'vacuumElement':['N=1 时，cᵢ=⟨0|aᵢ|Ψ₁⟩ 是不同的矩阵元。','For N=1, cᵢ=⟨0|aᵢ|Ψ₁⟩ is a different matrix element.'],
+ 'predict':['先做预测','Make a prediction'],'inspect':['动手检查','Inspect it'],'explain':['给出解释','Explain the distinction'],'answer':['检查解释','Check explanation'],
+ 'next':['下一步','Next step'],'previous':['上一步','Previous step'],'reset':['重置本节','Reset lesson'],'resetSandbox':['重置探索','Reset sandbox'],'resetAll':['从第一步开始','Start again at step 1'],
+ 'controls':['实验控制','Experiment controls'],'chooseSector':['模型 / 粒子数扇区','Model / number sector'],'choosePreset':['制备量子态','Prepare a state'],
+ 'j':['跃迁 j=J/E₀','Hopping j=J/E₀'],'u':['相互作用 u=U/E₀','Interaction u=U/E₀'],'time':['时间 τ=E₀t/ℏ','Time τ=E₀t/ℏ'],
+ 'units':['E₀ 是与 J 无关的固定参考能量；即使 j=0，时间仍定义良好。','E₀ is a fixed reference energy independent of J; time remains well-defined when j=0.'],
+ 'n1Interaction':['N=1 时，相互作用项恒为零。','For N=1, the interaction term vanishes identically.'],
+ 'timeApply':['设置时间','Set time'],'play':['播放','Play'],'pause':['暂停','Pause'],'reduced':['已启用减少动态效果：请用时间滑块或步进按钮。','Reduced motion is enabled: use the time slider or step buttons.'],
+ 'editor':['编辑完整复振幅','Edit all complex amplitudes'],'editorHint':['编辑只是草稿。点击“归一化并制备”才改变物理态。基底标签说明你正在编辑哪些坐标。','Edits are a draft. Only “Normalize and prepare” changes the physical state. Basis labels identify the coordinates you are editing.'],
+ 'editorStart':['用当前态开始草稿','Start a draft from the current state'],'prepare':['归一化并制备','Normalize and prepare'],'cancel':['取消草稿','Cancel draft'],'real':['实部','Real part'],'imaginary':['虚部','Imaginary part'],
+ 'partA':['A · 只改变坐标','A · Change coordinates only'],'partB':['B · 制备不同相位','B · Prepare different phases'],'n2Example':['N=2 示例','N=2 example'],'n1Example':['N=1 示例','N=1 example'],
+ 'preset.left':['全部在最左站点','All in the leftmost site'],'preset.right':['全部在最右站点','All in the rightmost site'],'preset.uniform':['单粒子等幅叠加','Equal single-particle superposition'],
+ 'preset.split':['|11⟩：各站一个','|11⟩: one in each site'],'preset.noon':['NOON+：双占据叠加','NOON+: double-occupation superposition'],'preset.phase-plus':['c+：正向流','c+: positive current'],'preset.phase-minus':['c−：反向流','c−: negative current'],'preset.edges':['两端各一个 |101⟩','One at each edge |101⟩'],'preset.double-superposition':['三个双占据配置等幅叠加','Equal three-site double-occupation superposition'],
+ 'comparison':['两种制备的参考值','Reference values for two preparations'],'compareSplit':['|11⟩：密度 (1,1)，γ=diag(1,1)，联合计数 1，同站概率 0。','|11⟩: density (1,1), γ=diag(1,1), joint count 1, same-site probability 0.'],'compareNoon':['NOON+：密度 (1,1)，γ=diag(1,1)，联合计数 0，同站概率 1。','NOON+: density (1,1), γ=diag(1,1), joint count 0, same-site probability 1.'],
+ 'trajectory':['仅对本节 L=2,N=2,j=1,u=0,初态 |11⟩：|ψ(τ)⟩=cos(2τ)|11⟩+i sin(2τ)NOON+。','Only for this lesson: L=2,N=2,j=1,u=0,initial |11⟩: |ψ(τ)⟩=cos(2τ)|11⟩+i sin(2τ)NOON+.'],
+ 'globalPhase':['τ=π/4 时为 i NOON+。整体相位 i 不改变任何可观测量预测。','At τ=π/4 the state is i NOON+. The global phase i changes no observable prediction.'],
+ 'hartree':['c±=(1/2, ±i/√2, −1/2) 是固定粒子数的 Hartree 态，不是 Glauber 相干态；两者的 αᵢ 仍为零。','c±=(1/2, ±i/√2, −1/2) are fixed-number Hartree states, not Glauber coherent states; both still have αᵢ=0.'],
+ 'passiveEquation':['|11⟩_a=(|20⟩_b−|02⟩_b)/√2。不同坐标，完全相同的物理态。','|11⟩_a=(|20⟩_b−|02⟩_b)/√2. Different coordinates, exactly the same physical state.'],
+ 'scope':['有限模式模型内精确演化，存在浮点误差。本工具不模拟连续场，不声称存在热力学相变。','Exact evolution within this finite-mode model, up to floating-point error. No continuum field or thermodynamic phase-transition claim.'],
+ 'credits':['背景与相关工具','Background and related tools'],'creditsText':['QuVis、Quantum Flytrap 与 QuTiP 等工具已提供丰富的量子教学与模拟。这里尝试的是一个所有振幅都可见的六步小例子，尚未证明教学优势。','QuVis, Quantum Flytrap and QuTiP already offer rich quantum teaching and simulation tools. This experiment is a six-step example with every amplitude visible; no learning advantage has been established.'],
+ 'status.ready':['从一个小例子开始。','Start with one small example.'],'status.lesson':['已重置到本节的规定模型与初态。','Reset to this lesson’s prescribed model and initial state.'],'status.sector':['新模型 / 粒子数扇区；量子态和时钟已重置。','New model / number sector; state and clock reset.'],
+ 'status.parameters':['哈密顿量已改变；从原先制备的态重新开始，τ=0。','Hamiltonian changed; replay starts from the prepared state at τ=0.'],'status.prepared':['已制备所选量子态，τ=0。','Prepared the selected state at τ=0.'],'status.basis':['只改变了显示坐标；物理态、时间与站点预测不变。','Only display coordinates changed; physical state, time and site predictions are unchanged.'],
+ 'status.invalidDraft':['草稿未应用：每项需为有限数、绝对值不超过 10⁶，且总范数不能为零。','Draft not applied: every entry must be finite, magnitude at most 10⁶, and the total norm must be nonzero.'],
+ 'status.normalized':['已将草稿从范数 {norm} 归一化并制备；τ=0。','Normalized the draft from norm {norm} and prepared it; τ=0.'],'status.canceled':['草稿已取消，物理态不变。','Draft canceled; the physical state is unchanged.'],'status.draftCanceled':['未应用的草稿已取消。','The unapplied draft was canceled.'],
+ 'status.invalid':['输入无效；保留上一个有效状态。','Invalid input; the last valid state is preserved.'],'status.unavailable':['此控制不属于当前引导步骤。','This control is not part of the current guided step.'],'status.numeric':['数值检验失败；请重置此示例。','Numerical check failed; reset this example.'],'status.answer':['已检查此选项；这不是对学习效果的评估。','This choice was checked; this is not an assessment of learning effectiveness.'],
+ 'status.time':['已设置时间。','Time updated.'],'status.language':['语言已切换；状态与草稿均保留。','Language changed; state and draft preserved.'],
+ 'noAnswer':['请先选择一种解释。','Choose an explanation first.'],
+};
+const all={zh:{},en:{}};for(const [key,[zh,en]]of Object.entries(phrases)){all.zh[key]=zh;all.en[key]=en;}
+function get(language,key,args={}){let value=all[language]?.[key];if(value===undefined)throw new Error(`Missing translation: ${language}.${key}`);for(const [name,replacement]of Object.entries(args))value=value.replaceAll(`{${name}}`,String(replacement));return value;}
+const Copy=Object.freeze({get,all});
+
+return {Copy};
+})();
+// module: lessons.mjs
+const {Lessons}=(()=>{
+
+const data={
+ 1:{title:['一条直线，几种“空间”','A line, several spaces'],intro:['物理维度、站点数与态空间维度是不同的问题。先把它们分开。','Physical dimension, site count and state-space dimension answer different questions. Separate them first.'],prediction:['依次考虑 (L,N)=(2,1),(3,1),(2,2),(3,2)。固定粒子数扇区各有几个配置？','For (L,N)=(2,1),(3,1),(2,2),(3,2), how many configurations are in each fixed-number sector?'],inspection:['切换四个模型，数清所有配置。每次切换都会明确重置量子态。','Switch between the four models and count every configuration. Each change explicitly resets the state.'],explanation:['物理空间仍是一条直线。d=C(N+L−1,N) 计算配置，而不是新的空间方向。','Physical space is still one line. d=C(N+L−1,N) counts configurations, not new spatial directions.'],choices:[['right',['2,3,3,6；物理维度始终是 1。','2,3,3,6; physical dimension stays 1.']],['sites',['2,3,2,3；每个站点只有一个振幅。','2,3,2,3; always one amplitude per site.']],['directions',['配置越多，物理空间方向就越多。','More configurations mean more physical directions.']]],wrong:['两粒子时，振幅属于完整占据配置。三个站点可产生六个配置，却仍在一条直线上。','For two particles, amplitudes belong to whole occupation configurations. Three sites give six configurations while staying on one line.']},
+ 2:{title:['一个振幅，一种配置','One amplitude, one configuration'],intro:['把 |110⟩ 当作一份完整的占据清单：第 1、2 站点各一个，第 3 站点零个。','Read |110⟩ as one complete occupation list: one boson in sites 1 and 2, none in site 3.'],prediction:['态为 (|200⟩+i|110⟩)/√2。|110⟩ 的振幅在说什么？','The state is (|200⟩+i|110⟩)/√2. What does the amplitude of |110⟩ describe?'],inspection:['选择 |110⟩，再展开双坐标网格。两个交换的格子各有概率 1/4，相加为 1/2。','Select |110⟩ and expand the coordinate grid. Its exchanged cells each have probability 1/4; together they give 1/2.'],explanation:['振幅 i/√2 属于整个配置。平均密度 (1.5,0.5,0) 来自完整态，不能用所选配置替代它。','The amplitude i/√2 belongs to the whole configuration. Mean density (1.5,0.5,0) comes from the complete state, not just the highlighted configuration.'],choices:[['right',['完整配置的振幅；坐标槽不标记粒子的永久身份。','A whole-configuration amplitude; coordinate slots are not permanent particle identities.']],['particle',['第一个粒子在第一个站点的振幅。','The amplitude of particle 1 at site 1.']],['plane',['网格说明物理空间有两个方向。','The grid means physical space has two directions.']]],wrong:['两个网格轴都是沿同一条物理直线的坐标。全同粒子的交换让 Ψ(r,s)=Ψ(s,r)。','Both grid axes are coordinates along the same physical line. Exchange of identical bosons gives Ψ(r,s)=Ψ(s,r).']},
+ 3:{title:['相同密度，不同关联','Same density, different pairs'],intro:['同一组平均占据数可以隐藏不同的完整量子态，甚至相同的一体密度矩阵也不够。','The same mean occupations can hide different full states. Even the same one-body density matrix is not enough.'],prediction:['|11⟩ 与 NOON+=(|20⟩+|02⟩)/√2 能用站点平均密度区分吗？','Can mean site density distinguish |11⟩ from NOON+=(|20⟩+|02⟩)/√2?'],inspection:['分别制备两个态。比较不变的密度与改变的联合计数。','Prepare each state. Compare the unchanged density with the changed joint count.'],explanation:['两个态都有密度 (1,1) 和 γ=diag(1,1)，但 ⟨n₁n₂⟩ 分别为 1 和 0。','Both have density (1,1) and γ=diag(1,1), but ⟨n₁n₂⟩ is 1 and 0 respectively.'],choices:[['right',['密度不能区分；两站的联合计数可以。','Density cannot distinguish them; joint counting can.']],['same',['相同密度意味着完全相同的态。','Equal density means exactly the same state.']],['empty',['NOON+ 的联合计数为零，所以没有粒子。','NOON+ has zero joint count, so it has no particles.']]],wrong:['联合计数为零表示这两个站点不会各出现一个粒子；NOON+ 仍有两个粒子，且总在同一站点被计数。','Zero joint count means one boson is not found at each site. NOON+ still has two bosons, counted together at a site.']},
+ 4:{title:['量子态在变，密度不变','Changing state, steady density'],intro:['现在让量子态真的演化。模型固定为两个站点、两个玻色子、无相互作用。','Now let the physical state evolve. The model is fixed to two sites, two bosons and zero interaction.'],prediction:['从 |11⟩ 出发，τ=π/4 时，平均占据数与同站概率是多少？','Starting at |11⟩, what are the mean occupations and same-site probability at τ=π/4?'],inspection:['移动时间滑块，或选择 π/4。注意复振幅与两粒子关联的变化。','Scrub time or choose π/4. Watch the complex amplitudes and two-particle correlations change.'],explanation:['在这个特定模型中，密度保持 (1,1)，同站概率是 sin²(2τ)。密度不是完整态。','In this particular model, density stays (1,1), while same-site probability is sin²(2τ). Density is not the full state.'],choices:[['right',['密度 (1,1)，同站概率 1；态是 i NOON+。','Density (1,1), same-site probability 1; the state is i NOON+.']],['unchanged',['密度没变，所以态一直是 |11⟩。','Density did not change, so the state stayed |11⟩.']],['halves',['密度 (1/2,1/2)，因为概率总和是 1。','Density (1/2,1/2), because probabilities sum to 1.']]],wrong:['配置概率之和为 1，而平均占据数之和为 N=2。关联和复振幅仍可在密度不变时改变。','Configuration probabilities sum to 1; mean occupations sum to N=2. Correlations and complex amplitudes can change while density stays fixed.']},
+ 5:{title:['期望值为零，算符并非为零','Zero expectation, nonzero map'],intro:['固定粒子数的态满足 αᵢ=0。要理解原因，看看 aᵢ 的输出去了哪个扇区。','A fixed-number state has αᵢ=0. To understand why, inspect the number sector of the output of aᵢ.'],prediction:['a₁|20⟩=√2|10⟩，但 α₁=0。这矛盾吗？','a₁|20⟩=√2|10⟩, yet α₁=0. Is that a contradiction?'],inspection:['比较 a₁ 与 a₂ 的矩形映射。再切到 N=1，看看真空矩阵元与 αᵢ 的区别。','Compare the rectangular a₁ and a₂ maps. Then switch to N=1 to distinguish a vacuum matrix element from αᵢ.'],explanation:['输出属于 N−1 扇区，与输入 N 扇区正交。输出非零与期望值为零可以同时成立。','The output belongs to the N−1 sector, orthogonal to the input N sector. A nonzero output and a zero expectation can coexist.'],choices:[['right',['不矛盾：两个粒子数扇区正交，aᵢ 本身不为零。','No contradiction: number sectors are orthogonal, and aᵢ itself is not zero.']],['zero',['αᵢ=0 说明 aᵢ 是零算符。','αᵢ=0 means aᵢ is a zero operator.']],['chance',['输出范数平方 2 表示移除概率 200%。','Output norm squared 2 means a 200% removal probability.']]],wrong:['这是一个未归一化的数学映射，不是已建模的物理移除实验；其范数平方不能直接当成概率。','This is an unnormalized mathematical map, not a modeled physical removal experiment. Its squared norm is not directly a probability.']},
+ 6:{title:['坐标变换与态制备','Coordinates versus preparation'],intro:['先改变描述同一个态的坐标，再比较相位不同的两个真实制备。','First change the coordinates of the same state. Then compare two genuinely different phase preparations.'],prediction:['把 |11⟩ 从站点坐标改写为偶 / 奇驻波坐标，站点预测会改变吗？','If |11⟩ is rewritten in even/odd standing-mode coordinates, do site predictions change?'],inspection:['切换显示基底，观察跨越原站点的模式形状。然后进入 B 部分。','Toggle the display basis and inspect profiles extending over the original sites. Then open part B.'],explanation:['被动坐标变换必须同时变换态、可观测量与完整哈密顿量；没有发生物理演化。','A passive change transforms the state, observables and complete Hamiltonian together; no physical evolution occurs.'],choices:[['right',['不会：仅改变坐标，模式仍跨越原来的物理站点。','No: only coordinates change; modes extend over the original physical sites.']],['move',['会：粒子被移动到两个新的站点。','Yes: particles move into two new sites.']],['two',['直接用 2×2 矩阵变换三个占据振幅即可。','A 2×2 matrix directly transforms the three occupation amplitudes.']]],wrong:['两粒子扇区需要提升后的 3×3 变换。驻波是扩展模式，不是新画出来的局域站点。','The two-particle sector needs the lifted 3×3 transform. Standing waves are extended modes, not new localized sites.']},
+};
+const phasePart={prediction:['c+ 与 c− 有相同的占据概率。它们一定是同一个态吗？','c+ and c− have the same occupation probabilities. Must they be the same state?'],inspection:['分别制备 c+ 与 c−，比较流，再演化到 τ=π/8。','Prepare c+ and c−, compare their currents, then evolve to τ=π/8.'],explanation:['两者占据概率都为 (1/4,1/2,1/4)，但相位产生相反的流 ±2，以及之后相反的密度偏向。','Both have probabilities (1/4,1/2,1/4), but their phases give opposite currents ±2 and later opposite density imbalances.'],choices:[['right',['不是；相位可改变相干、流与后续密度。','No; phases can change coherence, current and later density.']],['same',['是；占据概率已经包含量子态的全部信息。','Yes; occupation probabilities contain the entire quantum state.']],['coherent',['这是两种 Glauber 相干态，所以 αᵢ≠0。','They are Glauber coherent states, so αᵢ≠0.']]],wrong:['这些是固定粒子数 Hartree 态，仍满足 αᵢ=0。复振幅中的相对相位不可从概率恢复。','These are fixed-number Hartree states and still have αᵢ=0. Relative phases cannot be recovered from probabilities.']};
+function get(id,language,stage=0){const entry={...data[id],...(id===6&&stage===1?phasePart:{})};if(!entry.title)throw new Error('Unknown lesson.');const ix=language==='zh'?0:1;const out={};for(const key of ['title','intro','prediction','inspection','explanation'])out[key]=entry[key][ix];out.choices=entry.choices.map(([value,label])=>({id:value,label:label[ix]}));out.feedback={correct:language==='zh'?'这个区别是关键。再用联动视图检查你的解释。':'That distinction matters. Check the linked views against your explanation.',incorrect:entry.wrong[ix]};out.allowedActions=allowedActions(id,stage);return out;}
+function initial(id,stage=0){let sector={L:2,N:2},preset='split';if(id===1){sector={L:2,N:1};preset='left';}if(id===2)sector={L:3,N:2};if(id===5){sector={L:2,N:stage===1?1:2};preset='left';}if(id===6&&stage===1)preset='phase-plus';if(id!=='sandbox'&&!data[id])throw new Error('Unknown lesson.');let preparedSiteVector=Presets.vector(preset==='split'&&id===2?'left':preset,sector);if(id===2)preparedSiteVector=[[1/Math.SQRT2,0],[0,1/Math.SQRT2],[0,0],[0,0],[0,0],[0,0]];return{sector,j:1,u:0,preparedSiteVector,tau:0,timeDraft:null,displayBasis:'site',selectedConfiguration:id===2?1:0,selectedGridConfiguration:id===2?1:null,mapSite:0,lessonId:id,lessonStage:stage};}
+function allowedActions(id,stage=0){const common=['ENTER_LESSON','RESET','RESET_ALL','SET_LANGUAGE','SELECT_CONFIGURATION','SELECT_GRID_CONFIGURATION','ANSWER'];if(id==='sandbox')return [...common,'SET_SECTOR','SET_PARAMETERS','PREPARE_PRESET','SET_BASIS','SET_TIME','SET_TIME_DRAFT','SELECT_MAP_SITE','SET_EDITOR_DRAFT','PREPARE_EDITOR','CANCEL_EDITOR'];if(id===1)common.push('SET_SECTOR');if(id===3)common.push('PREPARE_PRESET');if(id===4)common.push('SET_TIME','SET_TIME_DRAFT');if(id===5)common.push('SET_LESSON_STAGE','SELECT_MAP_SITE');if(id===6){common.push('SET_LESSON_STAGE');if(stage===0)common.push('SET_BASIS');else common.push('PREPARE_PRESET','SET_TIME');}return common;}
+function check(id,stage,answer){return {correct:answer==='right',feedbackKey:answer==='right'?'correct':'incorrect'};}
+const Lessons=Object.freeze({get,initial,allowedActions,check});
+
+return {Lessons};
+})();
+// module: state.mjs
+const {AppState}=(()=>{
+
+
+
+
+
+
+function initial(language='zh'){return {...Lessons.initial(1),language,editorDraft:null,answerState:null,statusKey:'status.ready',statusArgs:{}};}
+function result(state,pause=false,announce=false){return {state,effects:{pause,announce}};}
+function status(state,key,args={},pause=true){return result({...state,statusKey:key,statusArgs:args},pause,true);}
+function derive(state){
+  const {sector,j,u,tau,preparedSiteVector,displayBasis,mapSite}=state,H=Physics.hamiltonian(sector,j,u),siteVector=Physics.evolve(H,preparedSiteVector,tau);
+  const q=Representations.standingModes(sector.L),S=Representations.lift(sector,q),prediction=Physics.predict(sector,j,u,siteVector),base=Physics.predict(sector,j,u,preparedSiteVector);
+  if(Math.abs(prediction.norm-1)>1e-10||Math.abs(prediction.density.reduce((a,b)=>a+b,0)-sector.N)>1e-10||Math.abs(prediction.energy-base.energy)>1e-10)throw new Error('Numerical invariant check failed.');
+  const A=Physics.annihilation(sector,mapSite),output=M.apply(A,siteVector);
+  return {siteVector,displayVector:displayBasis==='site'?siteVector:Representations.coordinates(siteVector,S),sectorBasis:Physics.basis(sector),S,H,
+    displayH:displayBasis==='site'?H:Representations.operator(H,S),prediction,grid:Representations.grid(sector,siteVector),modeProfiles:q,
+    annihilationInspection:{matrix:A,output,normSquared:M.inner(output,output)[0],sourceBasis:Physics.basis(sector),targetBasis:Physics.basis({...sector,N:sector.N-1}),sourceN:sector.N,targetN:sector.N-1}};
+}
+function reduce(state,action){
+  const bad=()=>status(state,'status.invalid',{},false);
+  if(!action||!Lessons.allowedActions(state.lessonId,state.lessonStage).includes(action.type))return status(state,'status.unavailable',{},false);
+  const canceled={draftCanceled:!!state.editorDraft};
+  try{
+    switch(action.type){
+      case 'ENTER_LESSON':
+        if(action.id!=='sandbox'&&(!Number.isInteger(action.id)||action.id<1||action.id>6))return bad();
+        return status({...state,...Lessons.initial(action.id),editorDraft:null,answerState:null},'status.lesson',canceled);
+      case 'SET_LESSON_STAGE':
+        if(![0,1].includes(action.stage))return bad();
+        return status({...state,...Lessons.initial(state.lessonId,action.stage),editorDraft:null,answerState:null},'status.lesson',canceled);
+      case 'RESET': return status({...state,...Lessons.initial(state.lessonId),editorDraft:null,answerState:null},'status.lesson',canceled);
+      case 'RESET_ALL': return status(initial(state.language),'status.lesson',canceled);
+      case 'SET_LANGUAGE':
+        if(!['zh','en'].includes(action.language))return bad();
+        return result({...state,language:action.language},false,false);
+      case 'SET_SECTOR':{
+        const sector={L:action.L,N:action.N};if(![2,3].includes(sector.L)||![1,2].includes(sector.N))return bad();
+        return status({...state,sector,j:1,u:0,tau:0,timeDraft:null,displayBasis:'site',preparedSiteVector:Presets.vector('left',sector),selectedConfiguration:0,selectedGridConfiguration:null,mapSite:0,editorDraft:null,answerState:null},'status.sector',canceled);
+      }
+      case 'SET_PARAMETERS':{
+        const j=action.j??state.j,u=action.u??state.u;if(!Number.isFinite(j)||!Number.isFinite(u)||j<0||j>2||u<0||u>4)return bad();
+        return status({...state,j,u,tau:0,timeDraft:null,editorDraft:null},'status.parameters',canceled);
+      }
+      case 'PREPARE_PRESET':{
+        if(state.lessonId===3&&!['split','noon'].includes(action.id)||state.lessonId===6&&!['phase-plus','phase-minus'].includes(action.id))return bad();
+        return status({...state,preparedSiteVector:Presets.vector(action.id,state.sector),tau:0,timeDraft:null,editorDraft:null,selectedConfiguration:0},'status.prepared',canceled);
+      }
+      case 'SET_BASIS':
+        if(!['site','standing'].includes(action.basis))return bad();
+        return status({...state,displayBasis:action.basis,timeDraft:null,selectedConfiguration:null,selectedGridConfiguration:null,editorDraft:null},'status.basis',canceled);
+      case 'SET_TIME_DRAFT':
+        if(typeof action.value!=='string')return bad();
+        return result({...state,timeDraft:action.value},true,false);
+      case 'SET_TIME':{
+        const max=state.lessonId===4?Math.PI/2:2*Math.PI;
+        if(!Number.isFinite(action.tau)||action.tau<0||action.tau>max||state.lessonId===6&&action.tau!==0&&action.tau!==Math.PI/8)return bad();
+        return result({...state,tau:action.tau,timeDraft:null},false,false);
+      }
+      case 'SELECT_CONFIGURATION':{
+        if(!Number.isInteger(action.index)||action.index<0||action.index>=Physics.basis(state.sector).length)return bad();
+        return result({...state,selectedConfiguration:action.index,selectedGridConfiguration:state.displayBasis==='site'?action.index:state.selectedGridConfiguration},false,false);
+      }
+      case 'SELECT_GRID_CONFIGURATION':{
+        if(state.sector.N!==2||!Number.isInteger(action.index)||action.index<0||action.index>=Physics.basis(state.sector).length)return bad();
+        return result({...state,selectedGridConfiguration:action.index,selectedConfiguration:state.displayBasis==='site'?action.index:state.selectedConfiguration},false,false);
+      }
+      case 'SELECT_MAP_SITE':
+        if(!Number.isInteger(action.site)||action.site<0||action.site>=state.sector.L)return bad();
+        return result({...state,mapSite:action.site},false,false);
+      case 'SET_EDITOR_DRAFT':{
+        if(!Array.isArray(action.draft)||action.draft.length!==Physics.basis(state.sector).length||!action.draft.every(x=>typeof x.re==='string'&&typeof x.im==='string'))return bad();
+        return result({...state,editorDraft:action.draft.map(x=>({...x}))},true,false);
+      }
+      case 'CANCEL_EDITOR':return status({...state,editorDraft:null},'status.canceled');
+      case 'PREPARE_EDITOR':{
+        if(!state.editorDraft)return bad();
+        const decimal=/^[+-]?(?:\d+(?:\.\d*)?|\.\d+)(?:[eE][+-]?\d+)?$/;
+        if(!state.editorDraft.every(x=>[x.re,x.im].every(s=>decimal.test(s.trim())&&Number.isFinite(Number(s))&&Math.abs(Number(s))<=1e6)))return status(state,'status.invalidDraft');
+        const raw=state.editorDraft.map(x=>[Number(x.re),Number(x.im)]),norm2=M.inner(raw,raw)[0];if(norm2<=1e-24)return status(state,'status.invalidDraft');
+        const norm=Math.sqrt(norm2),normalized=raw.map(z=>C.scale(z,1/norm));
+        const preparedSiteVector=state.displayBasis==='site'?normalized:M.apply(derive(state).S,normalized);
+        return status({...state,preparedSiteVector,tau:0,timeDraft:null,editorDraft:null},'status.normalized',{norm});
+      }
+      case 'ANSWER':{
+        if(state.lessonId==='sandbox')return bad();
+        const lesson=Lessons.get(state.lessonId,state.language,state.lessonStage);if(!lesson.choices.some(x=>x.id===action.answer))return bad();
+        return status({...state,answerState:{answer:action.answer,...Lessons.check(state.lessonId,state.lessonStage,action.answer)}},'status.answer',{},false);
+      }
+      default:return bad();
+    }
+  }catch{return bad();}
+}
+const AppState=Object.freeze({initial,reduce,derive});
+
+return {AppState};
+})();
+// module: format.mjs
+const {Format}=(()=>{
+
+function number(x){if(!Number.isFinite(x))return '—';if(Math.abs(x)<5e-13)return '0';if(Math.abs(x)<.001)return x.toExponential(5).replace(/(\.\d*?[1-9])0+e/,'$1e').replace(/\.0+e/,'e').replace('e+','e');return x.toFixed(6).replace(/\.?0+$/,'');}
+function complex([r,i]){const a=number(r),b=number(Math.abs(i));if(b==='0')return a;if(a==='0')return `${i<0?'−':''}${b}i`;return `${a} ${i<0?'−':'+'} ${b}i`;}
+function phase(z,language){const magnitude=Math.hypot(...z);if(magnitude===0)return Copy.get(language,'phaseUndefined');if(magnitude<1e-12)return Copy.get(language,'phaseUnresolved');return `${number(Math.atan2(z[1],z[0]))} rad`;}
+function ket(n,basis='site'){return `|${n.join('')}⟩${basis==='standing'?'_b':'_a'}`;}
+function escape(s){return String(s).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;').replaceAll("'",'&#39;');}
+function textState(vector,basis,language){return vector.map((z,i)=>`${complex(z)} ${ket(basis[i])}`).join(' + ');}
+const Format=Object.freeze({number,complex,phase,ket,escape,textState});
+
+return {Format};
+})();
+// module: views.mjs
+const {Views}=(()=>{
+
+
+const F=Format;
+function matrix(A,label,id='matrix'){return `<div class="matrix-scroll" data-control="${id}-scroll" tabindex="0" role="region" aria-label="${F.escape(label)}"><table class="matrix"><caption>${F.escape(label)}</caption><tbody>${A.map(row=>`<tr>${row.map(z=>`<td>${F.escape(F.complex(z))}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`;}
+function phasor(z,language){const m=Math.hypot(...z),a=Math.atan2(z[1],z[0]),x=20+14*Math.cos(a),y=20-14*Math.sin(a);return `<svg class="phasor" viewBox="0 0 40 40" role="img" aria-label="${F.escape(F.phase(z,language))}"><circle cx="20" cy="20" r="16" fill="none" stroke="currentColor" opacity=".25"/><path d="M4 20H36 M20 4V36" stroke="currentColor" opacity=".15"/>${m>=1e-12?`<path d="M20 20L${x} ${y}" stroke="currentColor" stroke-width="2"/><circle cx="${x}" cy="${y}" r="2.5" fill="currentColor"/>`:'<circle cx="20" cy="20" r="2" fill="currentColor"/>'}</svg>`;}
+function modeProfiles(vm,state,t){return `<div class="mode-profiles"><h3>${t('modeTitle')}</h3><p class="small">${t('modeCaption')}</p>${vm.modeProfiles[0].map((_,mode)=>`<div class="mode-profile"><strong>${state.sector.L===2?(mode===0?'b₊':'b₋'):`b${mode+1}`}</strong><svg viewBox="0 0 220 60" role="img" aria-label="${t('mode')} ${mode+1}: ${vm.modeProfiles.map(row=>F.number(row[mode][0])).join(', ')}"><path d="M20 30H200" stroke="currentColor" opacity=".25"/><polyline points="${vm.modeProfiles.map((row,i)=>`${20+i*180/(state.sector.L-1)},${30-25*row[mode][0]}`).join(' ')}" fill="none" stroke="currentColor" stroke-width="2"/>${vm.modeProfiles.map((row,i)=>`<circle cx="${20+i*180/(state.sector.L-1)}" cy="${30-25*row[mode][0]}" r="3" fill="currentColor"/>`).join('')}</svg><span class="mono">(${vm.modeProfiles.map(row=>F.number(row[mode][0])).join(', ')})</span></div>`).join('')}</div>`;}
+function physical(vm,state,t){const p=vm.prediction,N=state.sector.N;return `<section class="panel physical" aria-labelledby="physical-title"><div class="panel-head"><span class="eyebrow">01 · ${t('physical')}</span><span class="pill">L=${state.sector.L}, N=${N}</span></div><h2 id="physical-title">${t('meanOccupation')}</h2><div class="chain" style="--sites:${state.sector.L}">${p.density.map((n,i)=>`<div class="site-node"><span class="density-value mono" data-density="${i}">${F.number(n)}</span><div class="site-gauge"><div style="height:${Math.max(0,Math.min(100,n/N*100))}%" class="density-fill"></div><span class="site-orbit" aria-hidden="true">${i+1}</span></div><span>${t('site')} ${i+1}</span></div>`).join('')}</div><p class="small">${t('densityNote')}</p><p class="caption">${t('chainCaption')}</p>${state.displayBasis==='standing'?modeProfiles(vm,state,t):''}</section>`;}
+function amplitudes(vm,state,t){return `<section class="panel amplitudes" aria-labelledby="state-title"><div class="panel-head"><span class="eyebrow">02 · ${t('state')}</span><span class="pill">d=${vm.displayVector.length}</span></div><h2 id="state-title">${t(state.displayBasis==='site'?'siteBasis':'standingBasis')}</h2><div class="amplitude-grid">${vm.displayVector.map((z,i)=>`<button type="button" class="config-card ${state.selectedConfiguration===i?'selected':''}" data-action="select-config" data-control="config-${i}" data-index="${i}" data-config="${i}" aria-pressed="${state.selectedConfiguration===i}"><span class="config-top"><strong class="ket">${F.escape(F.ket(vm.sectorBasis[i],state.displayBasis))}</strong>${phasor(z,state.language)}</span><span class="amplitude-value mono">${F.escape(F.complex(z))}</span><span class="mini-label">${t('amplitude')}</span><span class="prob-row"><span>${t('probability')}</span><strong class="mono">${F.number(C.abs2(z))}</strong></span><span class="prob-track" aria-hidden="true"><span style="width:${Math.max(0,Math.min(100,C.abs2(z)*100))}%"></span></span><span class="phase-label">${t('phase')}: ${F.escape(F.phase(z,state.language))}</span></button>`).join('')}</div><p class="total-line">${t('probabilitySum')} <strong class="mono">${F.number(vm.prediction.norm)}</strong></p>${state.selectedConfiguration!==null?`<div class="selection"><span class="mini-label">${t('selectedConfig')}</span><strong class="ket">${F.escape(F.ket(vm.sectorBasis[state.selectedConfiguration],state.displayBasis))}</strong><span>${vm.sectorBasis[state.selectedConfiguration].map((n,i)=>`${t(state.displayBasis==='site'?'site':'mode')} ${i+1}: ${n}`).join(' · ')}</span></div>`:''}<p class="caption">${t('sectorNote')}</p></section>`;}
+function predictions(vm,state,t){const p=vm.prediction;return `<section class="panel predictions" aria-labelledby="predictions-title"><div class="panel-head"><span class="eyebrow">03 · ${t('predictions')}</span></div><h2 id="predictions-title">${t('pair')}</h2><div class="hero-number" data-pair>${p.pairProbability===null?'—':F.number(p.pairProbability)}</div><p class="small">${p.pairProbability===null?t('pairNA'):t('pairFormula')}</p><div class="metric-group"><h3>${t('pairJoint')}</h3>${p.pairs.map(({i,j,value})=>`<div class="metric"><span>⟨n${i+1}n${j+1}⟩</span><strong class="mono" data-joint="${i}-${j}">${F.number(value)}</strong></div>`).join('')}${state.sector.N===2?`<p class="small">${t('pairJointNote')}</p>`:''}</div><div class="metric-group"><h3>${t('current')}</h3>${p.currents.map((n,i)=>`<div class="metric"><span>${i+1} → ${i+2}</span><strong class="mono" data-current="${i}">${F.number(n)}</strong></div>`).join('')}<p class="small">${t('currentHint')}</p></div>${state.lessonId===3?`<div class="reference"><h3>${t('comparison')}</h3><p>${t('compareSplit')}</p><p>${t('compareNoon')}</p></div>`:''}${state.lessonId===4?`<div class="reference"><p>${t('trajectory')}</p><p>${t('globalPhase')}</p></div>`:''}${state.lessonId===6?`<div class="reference"><p>${t(state.lessonStage===0?'passiveEquation':'hartree')}</p></div>`:''}<div class="metric-group"><h3>${t('alpha')}</h3><p class="small">${t('alphaNote')}</p></div></section>`;}
+function coordinateGrid(vm,state,t){if(!vm.grid)return '';const L=state.sector.L;return `<details class="math-section" data-details="grid" ${state.lessonId===2?'open':''}><summary data-control="grid-summary">${t('grid')}</summary><p>${t('gridCaption')}</p><p class="small">${t('gridFormula')}</p><div class="coordinate-scroll" data-control="grid-scroll" tabindex="0" role="region" aria-label="${t('grid')}"><table class="coordinate-grid"><caption>${t('gridSlotR')} ↓ · ${t('gridSlotS')} →</caption><thead><tr><th scope="col">r / s</th>${vm.grid.map((_,i)=>`<th scope="col">${i+1}</th>`).join('')}</tr></thead><tbody>${vm.grid.map((row,i)=>`<tr><th scope="row">${i+1}</th>${row.map((z,j)=>{const occupation=Array.from({length:L},(_,k)=>+(i===k)+ +(j===k)),index=vm.sectorBasis.findIndex(n=>n.every((x,k)=>x===occupation[k]));return `<td><button class="grid-cell ${state.selectedGridConfiguration===index?'selected':''}" data-action="select-grid" data-control="grid-${i}-${j}" data-index="${index}" aria-label="r=${i+1}, s=${j+1}, Ψ=${F.escape(F.complex(z))}, |Ψ|²=${F.number(C.abs2(z))}"><strong class="mono">${F.escape(F.complex(z))}</strong><span>|Ψ|²=${F.number(C.abs2(z))}</span></button></td>`;}).join('')}</tr>`).join('')}</tbody></table></div>${state.selectedGridConfiguration!==null?`<p data-grid-combined>${t('gridCombined')}: <strong>${F.escape(F.ket(vm.sectorBasis[state.selectedGridConfiguration],'site'))} = ${F.number(C.abs2(vm.siteVector[state.selectedGridConfiguration]))}</strong></p>`:''}<p class="small">${t('gridTotal')}</p></details>`;}
+function mapInspector(vm,state,t){const a=vm.annihilationInspection;const stateText=(v,b,n)=>v.map((z,i)=>`${F.complex(z)} ${n===0?'|0⟩':F.ket(b[i],'site')}`).join(' + ');return `<details class="math-section" data-details="map" ${state.lessonId===5?'open':''}><summary data-control="map-summary">${t('map')}</summary><p>${t('mapCaption')}</p><div class="button-row">${Array.from({length:state.sector.L},(_,i)=>`<button data-action="map-site" data-control="map-site-${i}" data-site="${i}" aria-pressed="${state.mapSite===i}" ${![5,'sandbox'].includes(state.lessonId)?'disabled':''}>a${i+1}</button>`).join('')}</div><div class="sector-lanes"><div><span class="mini-label">${t('mapInput')} H${a.sourceN}</span><p class="mono">${F.escape(stateText(vm.siteVector,a.sourceBasis,a.sourceN))}</p></div><div class="map-arrow" aria-hidden="true">a${state.mapSite+1} ↓</div><div><span class="mini-label">${t('mapOutput')} H${a.targetN}</span><p class="mono" data-map-output>${F.escape(stateText(a.output,a.targetBasis,a.targetN))}</p></div></div><p>${t('mapNorm')}: <strong class="mono" data-map-norm>${F.number(a.normSquared)}</strong></p><p class="warning-note">${t('mapNormNote')}</p>${a.output.every(z=>z[0]===0&&z[1]===0)?`<p>${t('mapZero')}</p>`:Math.max(...a.output.map(z=>Math.hypot(...z)))<1e-12?`<p>${t('mapTiny')}</p>`:''}<p>${t('alphaNote')}</p>${state.sector.N===1?`<p>${t('vacuumElement')}</p>`:''}${matrix(a.matrix,`a${state.mapSite+1}: H${a.sourceN} → H${a.targetN} (${a.matrix.length} × ${a.matrix[0].length})`,'annihilation')}</details>`;}
+function math(vm,state,t){return `<section class="panel mathematics"><h2>${t('details')}</h2>${coordinateGrid(vm,state,t)}${mapInspector(vm,state,t)}<details class="math-section" data-details="operators"><summary data-control="operators-summary">${t('gamma')} · ${t('hamiltonian')}</summary>${matrix(vm.prediction.gamma,t('gamma'),'gamma')}<p>${t('hamiltonianHint')}</p>${matrix(vm.displayH,t('hamiltonian'),'hamiltonian')}<div class="metric"><span>${t('energy')}</span><strong class="mono">${F.number(vm.prediction.energy)}</strong></div><div class="metric"><span>${t('norm')}</span><strong class="mono">${F.number(vm.prediction.norm)}</strong></div></details></section>`;}
+function render(vm,state){const t=key=>F.escape(Copy.get(state.language,key));return physical(vm,state,t)+amplitudes(vm,state,t)+predictions(vm,state,t)+math(vm,state,t);}
+const Views=Object.freeze({render,matrix});
+
+return {Views};
+})();
+// module: controls.mjs
+const {Controls}=(()=>{
+
+const F=Format;
+
+
+function render(state,lesson){const t=key=>F.escape(Copy.get(state.language,key)),sandbox=state.lessonId==='sandbox',allowed=lesson?.allowedActions||[];
+ let html=`<aside class="lesson-area" aria-label="${t('controls')}"><section class="lesson-copy"><span class="eyebrow">${sandbox?'LAB':String(state.lessonId).padStart(2,'0')} / ${sandbox?t('sandbox'):'06'}</span><h1>${sandbox?t('sandbox'):F.escape(lesson.title)}</h1><p class="intro">${sandbox?t('sandboxIntro'):F.escape(lesson.intro)}</p>`;
+ if(!sandbox)html+=`<div class="question"><span class="step-label">${t('predict')}</span><p>${F.escape(lesson.prediction)}</p></div><div class="inspection"><span class="step-label">${t('inspect')}</span><p>${F.escape(lesson.inspection)}</p></div>`;
+ html+='</section><section class="control-panel">';
+ if(state.lessonId===5||state.lessonId===6)html+=`<div class="button-row stages">${[0,1].map(stage=>`<button data-action="stage" data-control="stage-${stage}" data-stage="${stage}" aria-pressed="${state.lessonStage===stage}">${t(state.lessonId===5?(stage===0?'n2Example':'n1Example'):(stage===0?'partA':'partB'))}</button>`).join('')}</div>`;
+ if(sandbox||state.lessonId===1)html+=`<fieldset><legend>${t('chooseSector')}</legend><div class="sector-buttons">${[[2,1],[3,1],[2,2],[3,2]].map(([L,N])=>`<button data-action="sector" data-control="sector-${L}-${N}" data-l="${L}" data-n="${N}" aria-pressed="${state.sector.L===L&&state.sector.N===N}">L=${L} · N=${N}</button>`).join('')}</div></fieldset>`;
+ if(sandbox||state.lessonId===3||state.lessonId===6&&state.lessonStage===1){const presets=Presets.list(state.sector).filter(p=>sandbox||state.lessonId===3&&['split','noon'].includes(p.id)||state.lessonId===6&&['phase-plus','phase-minus'].includes(p.id));html+=`<fieldset><legend>${t('choosePreset')}</legend><div class="preset-list">${presets.map(p=>`<button data-action="preset" data-control="preset-${p.id}" data-preset="${p.id}">${t(p.labelKey)}</button>`).join('')}</div></fieldset>`;}
+ if(sandbox||allowed.includes('SET_BASIS'))html+=`<fieldset><legend>${t('basis')}</legend><div class="button-row"><button data-action="basis" data-control="basis-site" data-basis="site" aria-pressed="${state.displayBasis==='site'}">${t('siteBasis')}</button><button data-action="basis" data-control="basis-standing" data-basis="standing" aria-pressed="${state.displayBasis==='standing'}">${t('standingBasis')}</button></div><p class="small">${t('basisHint')}</p></fieldset>`;
+ if(sandbox)html+=`<fieldset><legend>${t('controls')}</legend>${[['j',state.j,2,.05],['u',state.u,4,.1]].map(([name,value,max,step])=>`<label class="range-label" for="control-${name}">${t(name)} <output class="mono">${F.number(value)}</output></label><input type="range" id="control-${name}" data-control="${name}" data-input="parameter" data-parameter="${name}" min="0" max="${max}" step="${step}" value="${value}">`).join('')}<p class="small">${t('units')}</p>${state.sector.N===1?`<p class="warning-note">${t('n1Interaction')}</p>`:''}</fieldset>`;
+ if(sandbox||allowed.includes('SET_TIME')){const short=state.lessonId===6,max=state.lessonId===4?Math.PI/2:2*Math.PI,times=short?[[0,'0'],[Math.PI/8,'π/8']]:[[0,'0'],[Math.PI/8,'π/8'],[Math.PI/4,'π/4'],[Math.PI/2,'π/2']];html+=`<fieldset><legend>${t('time')}</legend><output class="time-display mono" data-time>${F.number(state.tau)}</output>${short?'':`<label class="sr-only" for="time-slider">${t('time')}</label><input id="time-slider" type="range" data-control="time-slider" data-input="time" min="0" max="${max}" step="0.001" value="${state.tau}">`}<div class="time-buttons">${times.map(([tau,label])=>`<button data-action="time" data-control="time-${label.replace('/','-')}" data-tau="${tau}">${label}</button>`).join('')}</div>${short?'':`<div class="time-entry"><label class="sr-only" for="time-entry">${t('time')}</label><input id="time-entry" data-control="time-entry" data-input="time-draft" type="text" inputmode="decimal" value="${F.escape(state.timeDraft??F.number(state.tau))}" autocomplete="off"><button data-action="time-apply" data-control="time-apply">${t('timeApply')}</button></div>${state.reducedMotion?`<p class="small">${t('reduced')}</p>`:`<button class="play-button" data-action="play" data-control="play">${t(state.playing?'pause':'play')}</button>`}`}</fieldset>`;}
+ if(sandbox){const basis=Physics.basis(state.sector);html+=`<details class="editor-section" data-details="editor"><summary data-control="editor-summary">${t('editor')}</summary><p class="small">${t('editorHint')}</p>${state.editorDraft?`<div class="editor-fields">${state.editorDraft.map((draft,i)=>`<fieldset><legend>${F.escape(F.ket(basis[i],state.displayBasis))}</legend><div class="complex-fields"><label>${t('real')}<input type="text" inputmode="decimal" autocomplete="off" data-control="editor-${i}-re" data-input="coefficient" data-index="${i}" data-part="re" value="${F.escape(draft.re)}" aria-label="${F.escape(F.ket(basis[i],state.displayBasis))} ${t('real')}"></label><label>${t('imaginary')}<input type="text" inputmode="decimal" autocomplete="off" data-control="editor-${i}-im" data-input="coefficient" data-index="${i}" data-part="im" value="${F.escape(draft.im)}" aria-label="${F.escape(F.ket(basis[i],state.displayBasis))} ${t('imaginary')}"></label></div></fieldset>`).join('')}</div><button class="primary" data-action="prepare-editor" data-control="prepare-editor">${t('prepare')}</button><button data-action="cancel-editor" data-control="cancel-editor">${t('cancel')}</button>`:`<button data-action="editor-start" data-control="editor-start">${t('editorStart')}</button>`}</details>`;}
+ html+=`<button class="reset-button" data-action="reset" data-control="reset">↺ ${t(sandbox?'resetSandbox':'reset')}</button></section>`;
+ if(!sandbox)html+=`<section class="explanation"><span class="step-label">${t('explain')}</span><p>${F.escape(lesson.explanation)}</p><div class="answer-choices">${lesson.choices.map(choice=>`<button class="answer-choice" data-action="answer" data-control="answer-${choice.id}" data-answer="${choice.id}" aria-pressed="${state.answerState?.answer===choice.id}">${F.escape(choice.label)}</button>`).join('')}</div>${state.answerState?`<p class="feedback ${state.answerState.correct?'correct':'incorrect'}" data-feedback>${F.escape(lesson.feedback[state.answerState.feedbackKey])}</p>`:''}<div class="lesson-paging">${state.lessonId>1?`<button data-action="lesson" data-control="previous" data-lesson="${state.lessonId-1}">← ${t('previous')}</button>`:''}<button class="primary" data-action="lesson" data-control="next" data-lesson="${state.lessonId===6?'sandbox':state.lessonId+1}">${state.lessonId===6?t('sandbox'):t('next')} →</button></div></section>`;
+ return html+'</aside>';
+}
+const Controls=Object.freeze({render});
+
+return {Controls};
+})();
+// module: app.mjs
+const {App}=(()=>{
+
+
+
+const F=Format;
+
+
+function mount(root){
+ let state=AppState.initial(),playing=false,frame=null,originTime=0,originTau=0,lastPaint=0;
+ const motion=window.matchMedia('(prefers-reduced-motion: reduce)');
+ function stop(){playing=false;if(frame!==null)cancelAnimationFrame(frame);frame=null;}
+ function capture(){const active=document.activeElement;return {id:root.contains(active)?active.dataset.control:null,start:active?.selectionStart,end:active?.selectionEnd,details:[...root.querySelectorAll('details[data-details]')].filter(x=>x.open).map(x=>x.dataset.details),scrollX:window.scrollX,scrollY:window.scrollY};}
+ function render({preserve=true,resetDetails=false,announce=false}={}){
+  const saved=preserve?capture():null,t=key=>F.escape(Copy.get(state.language,key));let vm;
+  try{vm=AppState.derive(state);}catch{stop();state={...state,statusKey:'status.numeric',statusArgs:{}};const status=root.querySelector('[data-status]');if(status)status.textContent=Copy.get(state.language,'status.numeric');return;}
+  const lesson=state.lessonId==='sandbox'?null:Lessons.get(state.lessonId,state.language,state.lessonStage);
+  document.documentElement.lang=state.language==='zh'?'zh-Hans':'en';document.title=`${Copy.get(state.language,'brand')} · Sites and States`;
+  root.innerHTML=`<a class="skip-link" href="#experiment">${t('skip')}</a><header class="app-header"><a class="wordmark" href="#" data-action="reset-all" data-control="home"><span class="brand-icon" aria-hidden="true">s/s</span><span><strong>${t('brand')}</strong><span class="tagline">${t('tagline')}</span></span></a><div class="header-actions"><span class="prototype-pill">EXPERIMENTAL · 0.1</span><label class="sr-only" for="language">${t('language')}</label><select id="language" data-input="language" data-control="language"><option value="zh" ${state.language==='zh'?'selected':''}>中文</option><option value="en" ${state.language==='en'?'selected':''}>English</option></select></div></header><nav class="lesson-nav" aria-label="${t('lessons')}">${Array.from({length:6},(_,i)=>`<button data-action="lesson" data-control="nav-${i+1}" data-lesson="${i+1}" aria-current="${state.lessonId===i+1?'step':'false'}"><span>${String(i+1).padStart(2,'0')}</span><span>${F.escape(Lessons.get(i+1,state.language).title)}</span></button>`).join('')}<button data-action="lesson" data-control="nav-sandbox" data-lesson="sandbox" aria-current="${state.lessonId==='sandbox'?'step':'false'}"><span>↗</span><span>${t('sandbox')}</span></button></nav><div class="model-strip"><div class="model-badge">${t('badge')}<span>${t(state.displayBasis==='site'?'siteBasis':'standingBasis')} · j=${F.number(state.j)} · u=${F.number(state.u)} · τ=${F.number(state.tau)}</span></div><div class="dimensions">${[['dimPhysical',1],['dimModes',state.sector.L],['dimParticles',state.sector.N],['dimSector',vm.displayVector.length]].map(([label,n])=>`<div><span>${t(label)}</span><strong>${n}</strong></div>`).join('')}</div></div><div class="status-bar" data-status ${announce?'role="status" aria-live="polite"':'aria-live="off"'}>${F.escape(Copy.get(state.language,state.statusKey,Object.fromEntries(Object.entries(state.statusArgs).map(([k,v])=>[k,typeof v==='number'?F.number(v):v]))))}${state.statusArgs.draftCanceled?` ${t('status.draftCanceled')}`:''}</div><main id="experiment" class="workspace" tabindex="-1">${Controls.render({...state,playing,reducedMotion:motion.matches},lesson)}${Views.render(vm,state)}</main><footer><p class="release">${t('release')}</p><p>${t('scope')}</p><details data-details="credits"><summary data-control="credits-summary">${t('credits')}</summary><p>${t('creditsText')}</p><p class="credit-links"><a href="https://www.st-andrews.ac.uk/physics/quvis/" target="_blank" rel="noreferrer">QuVis</a><a href="https://quantumflytrap.com/" target="_blank" rel="noreferrer">Quantum Flytrap</a><a href="https://qutip.org/" target="_blank" rel="noreferrer">QuTiP</a><a href="https://quspin.github.io/" target="_blank" rel="noreferrer">QuSpin</a><a href="https://github.com/Strilanc/Quirk" target="_blank" rel="noreferrer">Quirk</a><a href="https://phet.colorado.edu/en/simulations/quantum-wave-interference" target="_blank" rel="noreferrer">PhET</a><a href="https://www.falstad.com/qm1d/" target="_blank" rel="noreferrer">Falstad</a><a href="https://arxiv.org/abs/cond-mat/9805329" target="_blank" rel="noreferrer">Bose–Hubbard model</a></p><p>Original code: MIT · Original educational text and visuals: CC BY 4.0 · Sites and States contributors.</p></details></footer>`;
+  if(saved){if(!resetDetails)for(const detail of root.querySelectorAll('details[data-details]'))detail.open=saved.details.includes(detail.dataset.details);const focused=saved.id?[...root.querySelectorAll('[data-control]')].find(x=>x.dataset.control===saved.id):null;if(focused){focused.focus({preventScroll:true});if(typeof saved.start==='number'&&typeof focused.setSelectionRange==='function'){try{focused.setSelectionRange(saved.start,saved.end);}catch{}}}window.scrollTo(saved.scrollX,saved.scrollY);}
+ }
+ function renderLive(announce=false){
+  const saved=capture();let vm;try{vm=AppState.derive(state);}catch{stop();state={...state,statusKey:'status.numeric',statusArgs:{}};render();return;}
+  // Replace scientific views only. Native inputs keep their actual DOM nodes,
+  // including a range thumb's ongoing pointer interaction and text selections.
+  if(root.querySelector('.physical')){
+    const container=document.createElement('div');container.innerHTML=Views.render(vm,state);
+    for(const name of ['physical','amplitudes','predictions','mathematics']){
+      const old=root.querySelector(`.${name}`),fresh=container.querySelector(`.${name}`);if(old&&fresh)old.replaceWith(fresh);
+    }
+    for(const detail of root.querySelectorAll('details[data-details]'))detail.open=saved.details.includes(detail.dataset.details);
+  }
+  const setText=(selector,value)=>{const el=root.querySelector(selector);if(el)el.textContent=value;};
+  setText('[data-control="play"]',Copy.get(state.language,playing?'pause':'play'));
+  setText('[data-time]',F.number(state.tau));
+  for(const name of ['j','u'])setText(`.range-label[for="control-${name}"] output`,F.number(state[name]));
+  for(const [id,value]of [['time-slider',state.tau],['time-entry',state.timeDraft??F.number(state.tau)],['j',state.j],['u',state.u]]){const el=root.querySelector(`[data-control="${id}"]`);if(el)el.value=String(value);}
+  setText('.model-badge>span',`${Copy.get(state.language,state.displayBasis==='site'?'siteBasis':'standingBasis')} · j=${F.number(state.j)} · u=${F.number(state.u)} · τ=${F.number(state.tau)}`);
+  setText('[data-status]',Copy.get(state.language,state.statusKey,Object.fromEntries(Object.entries(state.statusArgs).map(([k,v])=>[k,typeof v==='number'?F.number(v):v])))+(state.statusArgs.draftCanceled?' '+Copy.get(state.language,'status.draftCanceled'):''));
+  const status=root.querySelector('[data-status]');status?.setAttribute?.('aria-live',announce?'polite':'off');
+  const focused=saved.id?[...root.querySelectorAll('[data-control]')].find(x=>x.dataset.control===saved.id):null;
+  if(focused&&focused!==document.activeElement){focused.focus({preventScroll:true});if(typeof saved.start==='number'&&typeof focused.setSelectionRange==='function'){try{focused.setSelectionRange(saved.start,saved.end);}catch{}}}
+ }
+ function dispatch(action,options={}){const change=AppState.reduce(state,action);state=change.state;if(change.effects.pause)stop();if(options.live)renderLive(change.effects.announce);else if(options.render!==false)render({resetDetails:['ENTER_LESSON','SET_LESSON_STAGE','RESET','RESET_ALL'].includes(action.type),announce:change.effects.announce});return state;}
+ function tick(now){if(!playing)return;const max=state.lessonId===4?Math.PI/2:2*Math.PI;const tau=Math.min(max,originTau+(now-originTime)/1000*.35);if(now-lastPaint>=80||tau===max){dispatch({type:'SET_TIME',tau},{live:true});lastPaint=now;}if(tau>=max){stop();render();}else frame=requestAnimationFrame(tick);}
+ function play(){if(playing){stop();render();return;}if(motion.matches)return;const allowed=Lessons.allowedActions(state.lessonId,state.lessonStage);if(!allowed.includes('SET_TIME')||state.lessonId===6)return;playing=true;originTau=state.tau;originTime=performance.now();lastPaint=originTime;render();frame=requestAnimationFrame(tick);}
+ function click(event){const el=event.target.closest('[data-action]');if(!el||!root.contains(el))return;event.preventDefault();const type=el.dataset.action;
+  if(type==='lesson')dispatch({type:'ENTER_LESSON',id:el.dataset.lesson==='sandbox'?'sandbox':Number(el.dataset.lesson)});
+  if(type==='reset')dispatch({type:'RESET'});if(type==='reset-all')dispatch({type:'RESET_ALL'});
+  if(type==='sector')dispatch({type:'SET_SECTOR',L:Number(el.dataset.l),N:Number(el.dataset.n)});
+  if(type==='stage')dispatch({type:'SET_LESSON_STAGE',stage:Number(el.dataset.stage)});
+  if(type==='preset')dispatch({type:'PREPARE_PRESET',id:el.dataset.preset});
+  if(type==='basis')dispatch({type:'SET_BASIS',basis:el.dataset.basis});
+  if(type==='time'){stop();dispatch({type:'SET_TIME',tau:Number(el.dataset.tau)});}
+  if(type==='time-apply'){stop();const value=root.querySelector('[data-control="time-entry"]').value;dispatch({type:'SET_TIME',tau:value.trim()===''?NaN:Number(value)});}
+  if(type==='play')play();if(type==='select-config')dispatch({type:'SELECT_CONFIGURATION',index:Number(el.dataset.index)});
+  if(type==='select-grid')dispatch({type:'SELECT_GRID_CONFIGURATION',index:Number(el.dataset.index)});
+  if(type==='map-site')dispatch({type:'SELECT_MAP_SITE',site:Number(el.dataset.site)});
+  if(type==='answer')dispatch({type:'ANSWER',answer:el.dataset.answer});
+  if(type==='editor-start'){const draft=AppState.derive(state).displayVector.map(([re,im])=>({re:String(re),im:String(im)}));dispatch({type:'SET_EDITOR_DRAFT',draft});}
+  if(type==='prepare-editor')dispatch({type:'PREPARE_EDITOR'});if(type==='cancel-editor')dispatch({type:'CANCEL_EDITOR'});
+ }
+ function input(event){const el=event.target;
+  if(el.dataset.input==='time-draft')dispatch({type:'SET_TIME_DRAFT',value:el.value},{live:true});
+  if(el.dataset.input==='coefficient'){const draft=state.editorDraft.map(x=>({...x}));draft[Number(el.dataset.index)][el.dataset.part]=el.value;dispatch({type:'SET_EDITOR_DRAFT',draft},{live:true});}
+  if(el.dataset.input==='parameter')dispatch({type:'SET_PARAMETERS',[el.dataset.parameter]:Number(el.value)},{live:true});
+  if(el.dataset.input==='time'){stop();dispatch({type:'SET_TIME',tau:Number(el.value)},{live:true});}
+ }
+ function change(event){if(event.target.dataset.input==='language')dispatch({type:'SET_LANGUAGE',language:event.target.value});}
+ function hidden(){if(document.hidden){stop();render();}}
+ function reduced(){if(motion.matches)stop();render();}
+ root.addEventListener('click',click);root.addEventListener('input',input);root.addEventListener('change',change);document.addEventListener('visibilitychange',hidden);motion.addEventListener('change',reduced);render({preserve:false});
+ return {dispatch,getState:()=>structuredClone(state),destroy(){stop();root.removeEventListener('click',click);root.removeEventListener('input',input);root.removeEventListener('change',change);document.removeEventListener('visibilitychange',hidden);motion.removeEventListener('change',reduced);}};
+}
+const App=Object.freeze({mount});
+if(typeof document!=='undefined'){const root=document.getElementById('app');if(root)App.mount(root);}
+
+return {App};
+})();
+})();
+</script>
+<details class="license-notices"><summary>Licenses / 许可</summary><pre>MIT License
+
+Copyright (c) 2026 Sites and States contributors
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+Scope: this MIT license covers program logic, tests and build/verification
+scripts. Original educational prose and visual design are separately licensed
+under CC BY 4.0 as identified in LICENSE-CONTENT. No third-party assets are
+included. A generated HTML file contains both kinds of work and retains both
+notices.
+</pre><pre>Original educational content and visual design
+Copyright (c) 2026 Sites and States contributors
+
+The original educational prose in README.md, docs/, src/copy.mjs and
+src/lessons.mjs, and original visual design in src/styles.css and the diagrams
+in src/views.mjs, are licensed under Creative Commons Attribution 4.0
+International (CC BY 4.0):
+https://creativecommons.org/licenses/by/4.0/
+Legal code: https://creativecommons.org/licenses/by/4.0/legalcode.en
+
+You may share and adapt this content, including commercially, under that
+license's terms. Attribute "Sites and States contributors", include the license
+link, and indicate changes. This summary does not replace the legal code.
+
+Program logic in these files is covered by the accompanying MIT license.
+The generated standalone HTML combines MIT code and CC BY 4.0 content; retain
+both notices when redistributing it. Mathematical facts are not claimed as
+original intellectual property. Named third-party projects retain their own
+licenses; none of their prose, worksheets, code, images or assets is copied
+into this project.
+</pre><a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></details>
+</body>
+</html>

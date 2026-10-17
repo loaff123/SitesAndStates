@@ -1,0 +1,20 @@
+Original educational content and visual design
+Copyright (c) 2026 Sites and States contributors
+
+The original educational prose in README.md, docs/, src/copy.mjs and
+src/lessons.mjs, and original visual design in src/styles.css and the diagrams
+in src/views.mjs, are licensed under Creative Commons Attribution 4.0
+International (CC BY 4.0):
+https://creativecommons.org/licenses/by/4.0/
+Legal code: https://creativecommons.org/licenses/by/4.0/legalcode.en
+
+You may share and adapt this content, including commercially, under that
+license's terms. Attribute "Sites and States contributors", include the license
+link, and indicate changes. This summary does not replace the legal code.
+
+Program logic in these files is covered by the accompanying MIT license.
+The generated standalone HTML combines MIT code and CC BY 4.0 content; retain
+both notices when redistributing it. Mathematical facts are not claimed as
+original intellectual property. Named third-party projects retain their own
+licenses; none of their prose, worksheets, code, images or assets is copied
+into this project.

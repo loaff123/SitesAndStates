@@ -1,0 +1,14 @@
+{
+  "name": "sites-and-states",
+  "version": "0.1.0-experimental",
+  "private": true,
+  "type": "module",
+  "description": "A tiny, inspectable bosonic state teaching experiment",
+  "engines": { "node": ">=20" },
+  "scripts": {
+    "test": "node --test tests/*.test.mjs",
+    "build": "node tools/build.mjs",
+    "verify:oracle": "python tools/oracle.py --check tests/fixtures/oracle.json",
+    "check": "npm test && npm run build"
+  }
+}
